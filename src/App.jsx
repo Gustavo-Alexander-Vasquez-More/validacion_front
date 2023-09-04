@@ -1,9 +1,7 @@
+import Index from "./pages/index"
 function App() {
-
   return (
-    <>
-      <h1>Vite + React</h1>
-    </>
+    <Index/>
   )
 }
 
