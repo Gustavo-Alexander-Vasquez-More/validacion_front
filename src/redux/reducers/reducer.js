@@ -1,28 +1,19 @@
 import { createReducer } from "@reduxjs/toolkit";
-import chapterActions from "../actions/chapter";
+import estadosActions from "../actions/estados.js";
 
-const {chapters_manga } = chapterActions;
+const {read_estados } = estadosActions;
 const initialState = {
-chapters: [], // Array para almacenar los capítulos del manga
-  prev: null,
-  next: null,
-  currentPage: 1,
+  estados:[]
 };
-const chapterReducer = createReducer(initialState, (builder) => {
+const estadosReducer = createReducer(initialState, (builder) => {
     builder
-.addCase(chapters_manga, //.addCase define la logica necesaria para modificar los estados
-        (state, action)=>{
-        let newState = {
+.addCase(read_estados.fulfilled, (state, action)=>{
+        return{
         ...state,
-
-        chapters:action.payload.chapters,
-        prev: action.payload.prev,
-        next: action.payload.next,
-        currentPage:action.payload.currentPage
-    };
-    return newState
-})
+        estados:action.payload
+        }
+   })
 })
 
 
-export default chapterReducer;
+export default estadosReducer;

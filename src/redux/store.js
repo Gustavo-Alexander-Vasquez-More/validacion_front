@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import chapterReducer from "./reducers/reducer";
+import estadosReducer from "./reducers/reducer.js";
 
 
 export const store = configureStore({
     reducer: {
-        chapters:chapterReducer
+        estados:estadosReducer
       },
 })

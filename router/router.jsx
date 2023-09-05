@@ -32,6 +32,7 @@ import Tlaxcala from "../src/pages/Estados/Tlaxcala";
 import Veracruz from "../src/pages/Estados/Veracruz";
 import Yucatan from "../src/pages/Estados/Yucatan";
 import Zacatecas from "../src/pages/Estados/Zacatecas";
+import PanelAdmin from "../src/pages/panelAdmin";
 const router = createBrowserRouter([
     {
         path:"/",
@@ -164,6 +165,10 @@ const router = createBrowserRouter([
     {
         path:"/consulta/zacatecas",
         element:<Zacatecas/>,
+    },
+    {
+        path:"panelAdministrador",
+        element:<PanelAdmin/>,
     },
     
 ])
