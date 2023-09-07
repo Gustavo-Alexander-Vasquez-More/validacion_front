@@ -13,6 +13,7 @@ const estadosReducer = createReducer(initialState, (builder) => {
         estados:action.payload
         }
    })
+   
 })
 
 
