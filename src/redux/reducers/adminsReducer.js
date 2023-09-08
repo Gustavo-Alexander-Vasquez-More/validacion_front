@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import adminActions from "../actions/admins.js";
 
-const {create_admins, login_admins, read_admins, delete_admins } = adminActions;
+const {create_admins, login_admins, read_admins, delete_admins, update_admins} = adminActions;
 const initialState = {
   admins:[]
 };
@@ -26,6 +26,12 @@ const adminsReducer = createReducer(initialState, (builder) => {
   }
 })
 .addCase(delete_admins.fulfilled, (state, action)=>{
+  return{
+  ...state,
+  admins:action.payload
+  }
+})
+.addCase(update_admins.fulfilled, (state, action)=>{
   return{
   ...state,
   admins:action.payload

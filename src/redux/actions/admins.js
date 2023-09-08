@@ -5,8 +5,7 @@ const create_admins = createAsyncThunk(
     async(datos)=>{
         try {
         const {data}=await axios.post('http://localhost:8084/api/admins/create', datos)
-        console.log(data.response);
-        return data.response
+      return data.response
         } catch (error) {
         }
     } 
@@ -20,7 +19,7 @@ const create_admins = createAsyncThunk(
       localStorage.setItem('token', token);
       localStorage.setItem('usuario', data.response.usuario); 
     localStorage.setItem('rol', data.response.rol )
-      console.log(data.response);
+    localStorage.setItem('folios', data.response.folios)
     return data.response;
     } catch (error) {
       console.log(error);
@@ -39,23 +38,38 @@ const read_admins = createAsyncThunk(
     async()=>{
         try {
         const {data}=await axios.get('http://localhost:8084/api/admins')
-        console.log(data.response);
         return data.response
         } catch (error) {
         }
     } 
 )
 const delete_admins = createAsyncThunk(
-    'delete_admins', 
-    async(datos)=>{
-        try {
-        const {data}=await axios.delete('http://localhost:8084/api/admins/delete', datos)
-        console.log(data.response);
-        return data.response
-        } catch (error) {
-        }
-    } 
-    )
+  'delete_admins',
+  async (datitos) => {
+    try {
+      const { data } = await axios.delete('http://localhost:8084/api/admins/delete', {
+        data: datitos, 
+      });
+    return data.response;
+    } catch (error) {
+      return null;
+    }
+  }
+)
+const update_admins = createAsyncThunk(
+  'update_admins', 
+  async (payload) => {
+    const { usuario, folios } = payload;
+    console.log(usuario);
+    console.log(folios);
+      try {
+      const {data}=await axios.put(`http://localhost:8084/api/admins/update/${usuario}`,{
+        folios:folios})
+      return data.response
+      } catch (error) {
+      }
+  } 
+)
 
-    const adminActions = { create_admins, login_admins, read_admins, delete_admins}
+    const adminActions = { create_admins, login_admins, read_admins, delete_admins, update_admins}
     export default adminActions
