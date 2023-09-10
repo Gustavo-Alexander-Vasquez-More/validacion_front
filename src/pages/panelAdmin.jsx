@@ -24,6 +24,8 @@ const [rfcValue, setRfcValue]=useState('')
 const [expedicionValue, setExpedicionValue]=useState('')
 const [vigeniaValue, setVigenciaValue]=useState('')
 const [estadoValue, setEstadoValue]=useState('')
+const [userValue, setUserValue]=useState('')
+const [addFolioValue, setAddFolioValue]=useState('')
 /*-------------------------------------------------------------------------------------*/
 const navigate=useNavigate()
 const inputPassword=useRef()
@@ -39,6 +41,8 @@ const inputRfc=useRef()
 const inputExpedicion=useRef()
 const inputVigencia=useRef()
 const inputEstado=useRef()
+const userSelect=useRef()
+const AgregarFolio=useRef()
 /*DESPACHANDO ACCIONES----------------------------------------------------------------------*/
 useEffect(() => {
   dispatch(adminActions.read_admins())
@@ -118,23 +122,20 @@ async function subirLicencia() {
       formData.append('vigencia', vigeniaValue);
       formData.append('estado_id', estadoValue);
       formData.append('foto', file);
-      if (formData) {
-        // Actualiza la cantidad de folios disponibles en el localStorage
-        const nuevaCantidadDeFolio = parseInt(cantidadDeFOlio) - 1;
+
+      // Obtener la cantidad actual de folios
+      const cantidadDeFOlio = parseInt(localStorage.getItem('folios'));
+
+      // Verificar si hay folios disponibles antes de restar uno
+      if (formData && cantidadDeFOlio > 0) {
+        // Restar uno a la cantidad actual de folios
+        const nuevaCantidadDeFolio = cantidadDeFOlio - 1;
+
+        // Actualizar la cantidad de folios disponibles en el localStorage
         localStorage.setItem('folios', nuevaCantidadDeFolio.toString());
-         dispatch(licenciaActions.create_licencia(formData));
-         await window.location.reload()
-        
-        
-        const nombre=localStorage.getItem('usuario')
-        const payload = {
-          usuario: nombre,
-          folios: nuevaCantidadDeFolio,
-        };
-        
-        dispatch(adminActions.update_admins(payload));
-      
-        // Realiza la solicitud API utilizando la acción de Redux
+
+        // Resto del código para enviar la licencia y actualizar el admin
+        dispatch(licenciaActions.create_licencia(formData));
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -142,11 +143,19 @@ async function subirLicencia() {
           showConfirmButton: false,
           timer: 1500,
         });
+        await window.location.reload();
+
+        const nombre = localStorage.getItem('usuario');
+        const payload = {
+          usuario: nombre,
+          folios: nuevaCantidadDeFolio,
+        };
+        dispatch(adminActions.update_admins(payload));
       } else {
         Swal.fire({
           position: 'center',
           icon: 'error',
-          title: 'Por favor, selecciona una imagen.',
+          title: 'Para seguir agregando licencias pide más folios!',
           showConfirmButton: false,
           timer: 1500,
         });
@@ -162,9 +171,8 @@ async function subirLicencia() {
     console.error(error); // Puedes agregar un mensaje de error más detallado si es necesario
   }
 }
-
-
 /*-----------------------------------------------------------------------------------------------------------*/
+/*FUNCIONES PARA AGREGAR FOLIOS A UN USUARIO*/
 /*CREAR USUARIOS---------------------------------------------------------------------------------------------*/
 async function crearUsuario(){
 try {
@@ -274,26 +282,63 @@ if(datitos){
   
 }
 }
+function capturarUsuario(){
+setUserValue(userSelect.current.value)
+}
+function capturarValorFolios(){
+setAddFolioValue(AgregarFolio.current.value)
+}
 
+async function agregarMasFolios(){
+try {
+  const payload = {
+    usuario: userValue,
+    folios: addFolioValue,
+  }
+  dispatch(adminActions.update_admins(payload))
+  Swal.fire({
+     position: 'center',
+     icon: 'success',
+     title: 'Folios agregados con éxito',
+     showConfirmButton: false,
+     timer: 1500,
+   });
+  await window.location.reload()
 
+} catch (error) {
+}
+}
 const excludedProperties = ['_id', 'createdAt', 'updatedAt', '__v', 'foto', 'estado_id','expedicion','vigencia']; // Lista de propiedades a excluir
 
 const propNames = licencias.length > 0
   ? Object.keys(licencias[0]).filter((propName) => !excludedProperties.includes(propName))
   : [];
+
+const superAdmin=localStorage.getItem('rol')
   return (
     <div className='w-full h-auto'>
       <div className='w-full h-[10vh] bg-[#0000ff9a] text-center'>
         <p className='text-[white] text-[3rem] font-thin '>Panel de Administrador</p>
       </div>
       <div className='w-full h-auto bg-[#0000ff9a] flex'>
-        <div className='w-[28%] h-auto bg-[#6363b39a] py-[5rem] px-[2rem] flex flex-col gap-[3rem] '>
+        <div className='w-[28%] h-screen bg-[#6363b39a] py-[5rem] px-[2rem] flex flex-col gap-[3rem] '>
+          {superAdmin === '1' ? (
+            <>
             <button onClick={()=>openModal('opcion1')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Crear usuarios</button>
             <button onClick={()=>openModal('opcion2')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Control de usuarios</button>
             <button onClick={()=>openModal('opcion3')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Eliminar usuario</button>
             <button onClick={()=>openModal('opcion4')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Subir licencias</button>
             <button onClick={()=>openModal('opcion5')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Editar/Eliminar licencias</button>
             <button onClick={LogOut} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
+            </>
+          ):
+          <>
+          <button onClick={()=>openModal('opcion4')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Subir licencias</button>
+          <button onClick={LogOut} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
+          </>
+          }
+           
+            
         </div>
         <div className='w-[70%] h-auto flex'>
         
@@ -326,14 +371,18 @@ const propNames = licencias.length > 0
             
             <div className='w-[80%] bg-[white] h-auto rounded-[10px] border-solid border-[1px] border-[gray] flex flex-col justify-around items-center py-[2rem] gap-5'>
             <p className='text-[2rem]'>Panel de usuarios</p>
-            {adminFiltered.map(admin=>(
+            <p>(Agrega el numero de folios para un Admin)</p>
             <div className='w-[90%] h-[8vh] bg-[black] flex items-center justify-around rounded-[5px]'>
             <p className='text-[white]' >Usuario:</p>
-            <p className='text-[white]'>{admin.usuario}</p>
-            <input  className='w-[15%]  px-[1rem] py-[0.3rem] rounded-[5px]' type="number" placeholder='N° folios'/>
-            <button className='bg-[green] text-[white] px-[1rem] py-[0.3rem] rounded-[10px] hover:bg-[#53a05d]'>Guardar</button>
+            <select onChange={capturarUsuario} ref={userSelect} className='w-[15rem]'>
+              <option value=''>Selecciona el admin</option>
+            {adminFiltered.map(admin=>(
+              <option value={admin.usuario}>{admin.usuario}</option>
+              ))}
+              </select>
+            <input ref={AgregarFolio} onChange={capturarValorFolios}  className='w-[15%]  px-[1rem] py-[0.3rem] rounded-[5px]' type="number" placeholder='N° folios'/>
+            <button onClick={agregarMasFolios} className='bg-[green] text-[white] px-[1rem] py-[0.3rem] rounded-[10px] hover:bg-[#53a05d]'>Añadir cantidad de folios</button>
             </div>
-            ))}
             </div>
             )}
             {opcionSelect === 'opcion3' && (
