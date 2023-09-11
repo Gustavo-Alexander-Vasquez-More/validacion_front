@@ -149,7 +149,7 @@ const router = createBrowserRouter([
         element:<Queretaro/>,
     },
     {
-        path:"/consulta/quintanaroo",
+        path:"/consulta/quintanaRoo",
         element:<QuintanaRoo/>,
     },
     {
@@ -193,87 +193,88 @@ const router = createBrowserRouter([
         element:<PanelAdmin/>,
     },
     {
-        path:"/validacion/aguasCalientes",
-        element:<AguasCalientesValidacion/>,
+        path: "/validacion/aguasCalientes/:folio",
+        element: <AguasCalientesValidacion />,
     },
+    
     {
-        path:"/validacion/campeche",
+        path:"/validacion/campeche/:folio",
         element:<CampecheVal/>,
     },
     {
-        path:"/validacion/chiapas",
+        path:"/validacion/chiapas/:folio",
         element:<ChiapasVal/>,
     },
     {
-        path:"/validacion/chihuahua",
+        path:"/validacion/chihuahua/:folio",
         element:<ChihuahuaVal/>,
     },
     {
-        path:"/validacion/coahuila",
+        path:"/validacion/coahuila/:folio",
         element:<CoahuilaVal/>,
     },
     {
-        path:"/validacion/colima",
+        path:"/validacion/colima/:folio",
         element:<ColimaVal/>,
     },
     {
-        path:"/validacion/guerrero",
+        path:"/validacion/guerrero/:folio",
         element:<GuerreroVal/>,
     },
     {
-        path:"/validacion/durango",
+        path:"/validacion/durango/:folio",
         element:<DurangoVal/>,
     },
     {
-        path:"/validacion/morelos",
+        path:"/validacion/morelos/:folio",
         element:<MorelosVal/>,
     },
     {
-        path:"/validacion/hidalgo",
+        path:"/validacion/hidalgo/:folio",
         element:<HidalgoVal/>,
     },
     {
-        path:"/validacion/nayarit",
+        path:"/validacion/nayarit/:folio",
         element:<NayaritVal/>,
     },
     {
-        path:"/validacion/nuevoLeon",
+        path:"/validacion/nuevoLeon/:folio",
         element:<NuevoLeonVal/>,
     },
     {
-        path:"/validacion/quintanaroo",
+        path:"/validacion/quintanaRoo/:folio",
         element:<QuintanaVal/>,
     },
     {
-        path:"/validacion/sanluisdepotosi",
+        path:"/validacion/sanLuisPotosi/:folio",
         element:<SanLuisVal/>,
     },
     {
-        path:"/validacion/sonora",
+        path:"/validacion/sonora/:folio",
         element:<SonoraVal/>,
     },
     {
-        path:"/validacion/sinaloa",
+        path:"/validacion/sinaloa/:folio",
         element:<SinaloaVal/>,
     },
     {
-        path:"/validacion/tabasco",
+        path:"/validacion/tabasco/:folio",
         element:<TabascoVal/>,
     },
     {
-        path:"/validacion/tamaulipas",
+        path:"/validacion/tamaulipas/:folio",
         element:<TamaulipasVal/>,
     },
     {
-        path:"/validacion/tlaxcala",
+        path:"/validacion/tlaxcala/:folio",
         element:<TlaxcalaVal/>,
     },
     {
-        path:"/validacion/yucatan",
+        path:"/validacion/yucatan/:folio",
         element:<YucatanVal/>,
     },
     {
-        path:"/validacion/zacatecas",
+        path:"/validacion/zacatecas/:folio",
         element:<ZacatecasVal/>,
     },
     
