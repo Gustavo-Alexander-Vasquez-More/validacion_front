@@ -14,6 +14,7 @@ console.log(file);
 const [passwordValue, setPasswordValue]=useState('')
 const [usuarioValue, setUsuarioValue]=useState('')
 const [folioValue, setFolioValue]=useState('')
+const [tipoValue, setTipoValue]=useState('')
 const [rolValue, setRolValue]=useState('')
 const [selectUser, setSelectUser]=useState('')
 /*USESTATE PARA EL FORMULARIO DE LICENCIAS*/
@@ -43,6 +44,7 @@ const inputVigencia=useRef()
 const inputEstado=useRef()
 const userSelect=useRef()
 const AgregarFolio=useRef()
+const inputTipe=useRef()
 /*DESPACHANDO ACCIONES----------------------------------------------------------------------*/
 useEffect(() => {
   dispatch(adminActions.read_admins())
@@ -74,13 +76,16 @@ setMostrarModal(false)
 
 
 function captureNombre(){
-setNombreValue(inputNombre.current.value)
+setNombreValue(inputNombre.current.value.trim())
 }
 function captureFolioForm(){
-setFolio_tipoValue(inputFolioForm.current.value)
+setFolio_tipoValue(inputFolioForm.current.value.trim())
+}
+function captureTipe(){
+setTipoValue(inputTipe.current.value.trim())
 }
 function captureRfc(){
-setRfcValue(inputRfc.current.value)
+setRfcValue(inputRfc.current.value.trim())
 }
 function captureExpedicion() {
   const fechaSeleccionada = inputExpedicion.current.value; // Obten la fecha del input
@@ -116,7 +121,8 @@ async function subirLicencia() {
 
       // Agregar los campos uno por uno al formData
       formData.append('nombre', nombreValue);
-      formData.append('folio_tipo', folio_tipoValue);
+      formData.append('folio', folio_tipoValue);
+      formData.append('tipo', tipoValue);
       formData.append('rfc_curp', rfcValue);
       formData.append('expedicion', expedicionValue);
       formData.append('vigencia', vigeniaValue);
@@ -201,16 +207,16 @@ try {
 }
 }
 function captureUsuario(){
-setUsuarioValue(inputUsuario.current.value)
+setUsuarioValue(inputUsuario.current.value.trim())
 }
 function capturePassword(){
-setPasswordValue(inputPassword.current.value)
+setPasswordValue(inputPassword.current.value.trim())
 }
 function captureFolio(){
-setFolioValue(inputFolio.current.value)
+setFolioValue(inputFolio.current.value.trim())
 }
 function captureRol(){
-setRolValue(inputRol.current.value)
+setRolValue(inputRol.current.value.trim())
 }
 const token = localStorage.getItem('token');
 const rol = localStorage.getItem('rol');
@@ -248,7 +254,7 @@ navigate('/');
 const adminFiltered = Array.isArray(admins) ? admins.filter(admin => admin.rol === 2) : [];
 /*ELIMINAR USUARIOS----------------------------------------------------------*/
 function captureSelect(){
-setSelectUser(inputSelectUser.current.value)
+setSelectUser(inputSelectUser.current.value.trim())
 }
 const datitos={
   usuario:selectUser
@@ -283,10 +289,10 @@ if(datitos){
 }
 }
 function capturarUsuario(){
-setUserValue(userSelect.current.value)
+setUserValue(userSelect.current.value.trim())
 }
 function capturarValorFolios(){
-setAddFolioValue(AgregarFolio.current.value)
+setAddFolioValue(AgregarFolio.current.value.trim())
 }
 
 async function agregarMasFolios(){
@@ -410,8 +416,12 @@ const superAdmin=localStorage.getItem('rol')
             <input onChange={captureNombre} ref={inputNombre} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[1rem] h-[2rem]' type="text"  />
             </div>
             <div className='flex flex-col px-[1rem] w-[60%]'>
-            <p>FOLIO / TIPO</p>
+            <p>FOLIO</p>
             <input onChange={captureFolioForm} ref={inputFolioForm} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[1rem] h-[2rem]' type="text" />
+            </div>
+            <div className='flex flex-col px-[1rem] w-[60%]'>
+            <p>TIPO</p>
+            <input onChange={captureTipe} ref={inputTipe} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[1rem] h-[2rem]' type="text" />
             </div>
             <div className='flex flex-col px-[1rem] w-[60%]'>
             <p>RFC / CURP</p>
