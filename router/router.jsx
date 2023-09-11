@@ -33,6 +33,28 @@ import Veracruz from "../src/pages/Estados/Veracruz";
 import Yucatan from "../src/pages/Estados/Yucatan";
 import Zacatecas from "../src/pages/Estados/Zacatecas";
 import PanelAdmin from "../src/pages/panelAdmin";
+/*ESTO ES PARA LAS PAGINAS DE VALIDACIONES*/
+import AguasCalientesValidacion from "../src/pages/validacionLicencias/aguasCalientes";
+import CampecheVal from "../src/pages/validacionLicencias/campecheVal";
+import ChiapasVal from "../src/pages/validacionLicencias/chiapasVal";
+import ChihuahuaVal from "../src/pages/validacionLicencias/chihuahuaVal";
+import CoahuilaVal from "../src/pages/validacionLicencias/coahuilaVal";
+import ColimaVal from "../src/pages/validacionLicencias/colimaVal";
+import DurangoVal from "../src/pages/validacionLicencias/durangoVal";
+import GuerreroVal from "../src/pages/validacionLicencias/guerreroVal";
+import HidalgoVal from "../src/pages/validacionLicencias/hidalgoVal"
+import MorelosVal from "../src/pages/validacionLicencias/morelosVal"
+import NayaritVal from "../src/pages/validacionLicencias/nayaritVal";
+import NuevoLeonVal from "../src/pages/validacionLicencias/nuevoLeonVal";
+import QuintanaVal from "../src/pages/validacionLicencias/quintanaVal";
+import SanLuisVal from "../src/pages/validacionLicencias/sanLuisVal";
+import SinaloaVal from "../src/pages/validacionLicencias/sinaloaVal";
+import SonoraVal from "../src/pages/validacionLicencias/SonoraVal"
+import TabascoVal from "../src/pages/validacionLicencias/tabascoVal";
+import TamaulipasVal from "../src/pages/validacionLicencias/tamaulipasVal";
+import TlaxcalaVal from "../src/pages/validacionLicencias/tlaxcalaVal";
+import YucatanVal from "../src/pages/validacionLicencias/yucatanVal";
+import ZacatecasVal from "../src/pages/validacionLicencias/zacatecasVal";
 const router = createBrowserRouter([
     {
         path:"/",
@@ -169,6 +191,90 @@ const router = createBrowserRouter([
     {
         path:"panelAdministrador",
         element:<PanelAdmin/>,
+    },
+    {
+        path:"/validacion/aguasCalientes",
+        element:<AguasCalientesValidacion/>,
+    },
+    {
+        path:"/validacion/campeche",
+        element:<CampecheVal/>,
+    },
+    {
+        path:"/validacion/chiapas",
+        element:<ChiapasVal/>,
+    },
+    {
+        path:"/validacion/chihuahua",
+        element:<ChihuahuaVal/>,
+    },
+    {
+        path:"/validacion/coahuila",
+        element:<CoahuilaVal/>,
+    },
+    {
+        path:"/validacion/colima",
+        element:<ColimaVal/>,
+    },
+    {
+        path:"/validacion/guerrero",
+        element:<GuerreroVal/>,
+    },
+    {
+        path:"/validacion/durango",
+        element:<DurangoVal/>,
+    },
+    {
+        path:"/validacion/morelos",
+        element:<MorelosVal/>,
+    },
+    {
+        path:"/validacion/hidalgo",
+        element:<HidalgoVal/>,
+    },
+    {
+        path:"/validacion/nayarit",
+        element:<NayaritVal/>,
+    },
+    {
+        path:"/validacion/nuevoLeon",
+        element:<NuevoLeonVal/>,
+    },
+    {
+        path:"/validacion/quintanaroo",
+        element:<QuintanaVal/>,
+    },
+    {
+        path:"/validacion/sanluisdepotosi",
+        element:<SanLuisVal/>,
+    },
+    {
+        path:"/validacion/sonora",
+        element:<SonoraVal/>,
+    },
+    {
+        path:"/validacion/sinaloa",
+        element:<SinaloaVal/>,
+    },
+    {
+        path:"/validacion/tabasco",
+        element:<TabascoVal/>,
+    },
+    {
+        path:"/validacion/tamaulipas",
+        element:<TamaulipasVal/>,
+    },
+    {
+        path:"/validacion/tlaxcala",
+        element:<TlaxcalaVal/>,
+    },
+    {
+        path:"/validacion/yucatan",
+        element:<YucatanVal/>,
+    },
+    {
+        path:"/validacion/zacatecas",
+        element:<ZacatecasVal/>,
     },
     
 ])
