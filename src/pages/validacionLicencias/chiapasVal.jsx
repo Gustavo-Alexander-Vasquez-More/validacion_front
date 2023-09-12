@@ -24,7 +24,7 @@ const folio = useParams();
 
   function disableRightClick(event) {
     event.preventDefault();
-    alert('Prohibido hacer click derecho')
+    alert('Prohibido realizar clic derecho')
   }
   const licencia=useSelector((store)=>store.licencias.licencias)
   const licenciaChiapas=licencia.filter(licencia=>licencia.estado_id.nombre === 'Chiapas')

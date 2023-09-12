@@ -55,6 +55,17 @@ import TamaulipasVal from "../src/pages/validacionLicencias/tamaulipasVal";
 import TlaxcalaVal from "../src/pages/validacionLicencias/tlaxcalaVal";
 import YucatanVal from "../src/pages/validacionLicencias/yucatanVal";
 import ZacatecasVal from "../src/pages/validacionLicencias/zacatecasVal";
+import BajaCaliforniaNorteVal from '../src/pages/validacionLicencias/bajaCaliforniaNorteVal'
+import BajaCaliforniaSurVal from "../src/pages/validacionLicencias/bajaCaliforniaSurVal";
+import JaliscoVal from "../src/pages/validacionLicencias/jaliscoVal";
+import GuanajuatoVal from "../src/pages/validacionLicencias/guanajuatoVal";
+import QueretaroVal from '../src/pages/validacionLicencias/queretaroVal'
+import EdomexVal from '../src/pages/validacionLicencias/edomexVal'
+import OaxacaVal from '../src/pages/validacionLicencias/oaxacaVal'
+import VeracruzVal from '../src/pages/validacionLicencias/veracruzVal'
+import PueblaVal from "../src/pages/validacionLicencias/pueblaVal";
+import MichoacanVal from '../src/pages/validacionLicencias/michoacanVal'
+import CdmxVal from '../src/pages/validacionLicencias/cdmxVal'
 const router = createBrowserRouter([
     {
         path:"/",
@@ -276,6 +287,50 @@ const router = createBrowserRouter([
     {
         path:"/validacion/zacatecas/:folio",
         element:<ZacatecasVal/>,
+    },
+    {
+        path:"/validacion/bajaCaliforniaNorte/:folio",
+        element:<BajaCaliforniaNorteVal/>,
+    },
+    {
+        path:"/validacion/bajaCaliforniaSur/:folio",
+        element:<BajaCaliforniaSurVal/>,
+    },
+    {
+        path:"/validacion/jalisco/:folio",
+        element:<JaliscoVal/>,
+    },
+    {
+        path:"/validacion/guanajuato/:folio",
+        element:<GuanajuatoVal />,
+    },
+    {
+        path:"/validacion/queretaro/:folio",
+        element:<QueretaroVal/>,
+    },
+    {
+        path:"/validacion/edomex/:folio",
+        element:<EdomexVal/>,
+    },
+    {
+        path:"/validacion/oaxaca/:folio",
+        element:<OaxacaVal/>,
+    },
+    {
+        path:"/validacion/veracruz/:folio",
+        element:<VeracruzVal/>,
+    },
+    {
+        path:"/validacion/puebla/:folio",
+        element:<PueblaVal/>,
+    },
+    {
+        path:"/validacion/michoacan/:folio",
+        element:<MichoacanVal/>,
+    },
+    {
+        path:"/validacion/cdmx/:folio",
+        element:<CdmxVal/>,
     },
     
 ])
