@@ -25,7 +25,7 @@ export default function durangoVal() {
   
     function disableRightClick(event) {
       event.preventDefault();
-      alert('Prohibido realizar click derecho')
+      alert('Prohibido realizar clic derecho')
     }
     const licencia=useSelector((store)=>store.licencias.licencias)
     const licenciaDurango=licencia.filter(licencia=>licencia.estado_id.nombre === 'Durango')

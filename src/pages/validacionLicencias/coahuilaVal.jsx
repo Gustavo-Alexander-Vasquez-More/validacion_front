@@ -23,7 +23,7 @@ export default function coahuilaVal() {
   
     function disableRightClick(event) {
       event.preventDefault();
-      alert('Prohibido realizar click derecho')
+      alert('Prohibido realizar clic derecho')
     }
     const licencia=useSelector((store)=>store.licencias.licencias)
     const licenciaCoahuila=licencia.filter(licencia=>licencia.estado_id.nombre === 'Coahuila')
