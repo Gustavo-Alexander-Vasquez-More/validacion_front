@@ -49,9 +49,9 @@ console.log(foundLicencia );
       <div className='w-full h-[8vh] bg-[#1f1f70] flex items-center justify-end px-[2rem]'>
         <p className=' text-[white] font-medium'>Aguas Calientes - Gobierno del Estado.</p>
       </div>
-      <div className='w-full h-[96vh] bg-[url("/public/AguasCalientes/textura.jpg")] bg-contain bg-center flex flex-col items-center py-[4rem] gap-5'>
-        <img className='w-[25rem]' src="/public/AguasCalientes/logo.png" alt="" />
-        <div className='bg-[white] border-solid border-[1px] border-[#1f1f70] w-[30%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
+      <div className='w-full h-[96vh]  bg-[url("/public/AguasCalientes/textura.jpg")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
+        <img className='lg:w-[25rem] sm:w-[15rem]' src="/public/AguasCalientes/logo.png" alt="" />
+        <div className='bg-[white] border-solid border-[1px] border-[#1f1f70] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
           <p className=' font-semibold text-[1.5rem]'>Consulta</p>
           <p>N° Folio</p>
           <input

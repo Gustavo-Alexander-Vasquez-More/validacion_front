@@ -47,20 +47,29 @@ async function navigateValidation() {
 }
   return (
     <div className='w-full h-screen flex flex-col'>
-    <div className='w-full h-[8vh] bg-[#aa2c3d] flex items-center justify-end px-[2rem]'>
-    <p className=' text-[white] font-medium'>Zacatecas - Gobierno del Estado.</p>
+    <div className='w-full h-[8vh] bg-[#b62f2f] flex items-center justify-end px-[2rem]'>
+      <p className=' text-[white] font-medium'>Zacatecas - Gobierno del Estado.</p>
     </div>
-    <div className='w-full h-[96vh] bg-[url("/public/Guerrero/textura.jpg")] bg-contain bg-center flex flex-col items-center py-[3rem] gap-7'>
-    <img className='w-[25rem]'  src="/public/Zacatecas/logo.png" alt="" />
-    <div className='bg-[white] border-solid border-[1px] border-[#aa2c3d] w-[30%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
-    <p className=' font-semibold text-[1.5rem]'>Consulta</p>
-    <p>N° Folio</p>
-    <input  ref={inputSearch}
-            onChange={captureSearch} className='border-solid border-[1px] border-[gray] rounded-[5px] h-[2.5rem] px-[1rem]' placeholder='Buscar ...' type="text" name="" id="" />
-    <button onClick={navigateValidation} className='bg-[#aa2c3d] rounded-[10px] text-[white] py-[0.5rem]'>Buscar</button>    
+    <div className='w-full h-[96vh]  bg-[url("/public/Zacatecas/textura.jpg")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
+      <img className='lg:w-[20rem] sm:w-[15rem]' src="/public/Zacatecas/logo.png" alt="" />
+      <div className='bg-[white] border-solid border-[1px] border-[#b62f2f] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
+        <p className=' font-semibold text-[1.5rem]'>Consulta</p>
+        <p>N° Folio</p>
+        <input
+          ref={inputSearch}
+          onChange={captureSearch}
+          className='border-solid border-[1px] border-[gray] rounded-[5px] h-[2.5rem] px-[1rem]'
+          placeholder='Buscar ...'
+          type="text"
+          name=""
+          id=""
+        />
+        <button onClick={navigateValidation} className='bg-[#b62f2f] rounded-[10px] text-[white] py-[0.5rem]'>
+          Buscar
+        </button>
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
   );
   
 }

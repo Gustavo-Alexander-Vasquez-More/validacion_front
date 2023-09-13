@@ -48,19 +48,28 @@ async function navigateValidation() {
 }
   return (
     <div className='w-full h-screen flex flex-col'>
-    <div className='w-full h-[8vh] bg-[#9e8d2d] flex items-center justify-end px-[2rem]'>
-    <p className=' text-[white] font-medium'>Hidalgo - Gobierno del Estado.</p>
+    <div className='w-full h-[8vh] bg-[#6e6a2b] flex items-center justify-end px-[2rem]'>
+      <p className=' text-[white] font-medium'>Hidalgo - Gobierno del Estado.</p>
     </div>
-    <div className='w-full h-[96vh] bg-[url("/public/Guerrero/textura.jpg")] bg-contain bg-center flex flex-col items-center py-[5rem]'>
-    <img className='w-[25rem]'  src="/public/Hidalgo/logo.png" alt="" />
-    <div className='bg-[white] border-solid border-[1px] border-[#9e8d2d] w-[30%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
-    <p className=' font-semibold text-[1.5rem]'>Consulta</p>
-    <p>N° Folio</p>
-    <input ref={inputSearch}
-            onChange={captureSearch} className='border-solid border-[1px] border-[gray] rounded-[5px] h-[2.5rem] px-[1rem]' placeholder='Buscar ...' type="text" name="" id="" />
-    <button onClick={navigateValidation} className='bg-[#9e8d2d] rounded-[10px] text-[white] py-[0.5rem]'>Buscar</button>    
+    <div className='w-full h-[96vh]  bg-[url("/public/Hidalgo/textura.jpg")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
+      <img className='lg:w-[25rem] sm:w-[20rem]' src="/public/Hidalgo/logo.png" alt="" />
+      <div className='bg-[white] border-solid border-[1px] border-[#6e6a2b] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
+        <p className=' font-semibold text-[1.5rem]'>Consulta</p>
+        <p>N° Folio</p>
+        <input
+          ref={inputSearch}
+          onChange={captureSearch}
+          className='border-solid border-[1px] border-[gray] rounded-[5px] h-[2.5rem] px-[1rem]'
+          placeholder='Buscar ...'
+          type="text"
+          name=""
+          id=""
+        />
+        <button onClick={navigateValidation} className='bg-[#6e6a2b] rounded-[10px] text-[white] py-[0.5rem]'>
+          Buscar
+        </button>
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
   );
 }

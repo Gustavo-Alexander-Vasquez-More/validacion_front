@@ -67,7 +67,7 @@ function handleKeyPress(event) {
     <div className=' w-full h-screen flex justify-center items-center bg-[#e4e4e4]'>
       <div className='w-full sm:w-[70%] lg:w-[50%] md:h-auto flex flex-col items-center justify-around gap-[2rem] py-[1.5rem] '>
       <img className='w-[7rem]' src="../public/icon.png" alt="" />
-        <p className='text-[2rem] font-bold text-[black]'>Inicio de Sesion</p>
+        <p className='text-[2rem] font-bold text-[black]'>Inicio de Sesión</p>
         <div className='flex flex-col w-[77%]  sm:w-[60%] gap-2'>
           
         <p className=' font-semibold'>Usuario:</p>
