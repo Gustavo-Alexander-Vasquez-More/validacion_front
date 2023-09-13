@@ -44,12 +44,12 @@ function formatearFecha(fechaISO8601) {
 
   return (
   <div className='w-full h-screen  px-[8rem]'>
-    <div className=' w-full h-[20vh] flex justify-center items-end'>
-    <img className='w-[12rem] h-[6rem]' src="../../public/AguasCalientes/logo.png" alt="" />
+    <div className=' w-full h-[15vh] flex justify-center items-end'>
+    <img className='lg:w-[15rem] sm:w-[10rem]  h-[6rem]' src="../../public/AguasCalientes/logo.png" alt="" />
     </div>
-    <div className='w-full h-[80vh] flex'>
-    <div className=' w-[60%] h-[80vh]  flex items-end py-[2rem] bg-[white] '>
-    <div className='absolute w-[25%] h-[71vh] right-[60%] border-solid border-[1px] border-[#c7c4c4] bg-[white] animate-rotate-x'>
+    <div className='w-full h-[90vh] flex'>
+    <div className=' lg:w-[60%] lg:h-[90vh] flex items-end lg:py-[2rem] sm:py-[1.5rem] bg-[white] '>
+    <div className='absolute lg:w-[25%] lg:h-[80vh] sm:right-[55%] sm:h-[80vh]  lg:right-[60%] border-solid border-[1px] border-[#c7c4c4] bg-[white] animate-rotate-x'>
     <div className='w-full h-[5vh]  text-[#4b4b9b] flex justify-center items-center text-[1.2rem] border-solid border-[1px] border-[#c7c4c4]'>Datos personales</div>
     <div className='w-full h-[15vh] flex justify-center py-[1rem]'>
         <img className='h-[13vh] w-[6rem]' src={licenciaEncontrada ? `http://localhost:8084/${licenciaEncontrada.foto}` : 'nothing' } alt="" />
@@ -72,9 +72,9 @@ function formatearFecha(fechaISO8601) {
     </div>
     <div className='bg-[url("/public/AguasCalientes/2.png")] w-full h-[30vh] bg-contain bg-no-repeat'></div>
     </div>
-    <div className='w-[40%] h-[80vh]'></div>
-    <div className='absolute w-[35rem] h-[30vh] bg-[white] right-[15rem] bottom-[22rem] px-[3rem]  border-[1px] border-solid border-[#c7c4c4] font-semibold flex flex-col justify-around py-[2rem] items-center text-center animate-rotate-x rounded-[5px]'>
-    <p className='text-[#4b4b9b] text-[2rem]'>Validación de licencias de conducir</p>
+    <div className='w-[45%] h-[80vh]'></div>
+    <div className='absolute lg:w-[40%] sm:w-[35%] lg:h-[30vh] sm:h-[29vh] bg-[white] lg:left-[50%] lg:bottom-[50%] sm:left-[50%] sm:bottom-[50%] lg:px-[3rem] sm:px-[2rem] border-[1px] border-solid border-[#c7c4c4] font-semibold flex flex-col justify-around py-[2rem] items-center text-center animate-rotate-x rounded-[5px]'>
+    <p className='text-[#4b4b9b] lg:text-[1.5rem]'>Validación de licencias de conducir</p>
     <img className='w-[15rem]' src="../../public/AguasCalientes/logo.png" alt="" />
     </div>
     </div>

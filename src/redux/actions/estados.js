@@ -4,7 +4,7 @@ const read_estados = createAsyncThunk(
     'read_estados', 
     async()=>{
         try {
-        const {data}=await axios.get('http://localhost:8084/api/estados')
+        const {data}=await axios.get('https://validacionback-production.up.railway.app/api/estados')
         return data.response
         } catch (error) {
         }

@@ -4,7 +4,7 @@ const create_admins = createAsyncThunk(
     'create_admins', 
     async(datos)=>{
         try {
-        const {data}=await axios.post('http://localhost:8084/api/admins/create', datos)
+        const {data}=await axios.post('https://validacionback-production.up.railway.app/api/admins/create', datos)
       return data.response
         } catch (error) {
         }
@@ -14,7 +14,7 @@ const create_admins = createAsyncThunk(
         'login_admins', 
         async(datos)=>{
             try {
-            const {data}=await axios.post('http://localhost:8084/api/admins/login', datos)
+            const {data}=await axios.post('https://validacionback-production.up.railway.app/api/admins/login', datos)
             let token = data.response.token;
       localStorage.setItem('token', token);
       localStorage.setItem('usuario', data.response.usuario); 
@@ -37,7 +37,7 @@ const read_admins = createAsyncThunk(
     'read_admins', 
     async()=>{
         try {
-        const {data}=await axios.get('http://localhost:8084/api/admins')
+        const {data}=await axios.get('https://validacionback-production.up.railway.app/api/admins')
         return data.response
         } catch (error) {
         }
@@ -47,7 +47,7 @@ const delete_admins = createAsyncThunk(
   'delete_admins',
   async (datitos) => {
     try {
-      const { data } = await axios.delete('http://localhost:8084/api/admins/delete', {
+      const { data } = await axios.delete('https://validacionback-production.up.railway.app/api/admins/delete', {
         data: datitos, 
       });
     return data.response;
@@ -63,7 +63,7 @@ const update_admins = createAsyncThunk(
     console.log(usuario);
     console.log(folios);
       try {
-      const {data}=await axios.put(`http://localhost:8084/api/admins/update/${usuario}`,{
+      const {data}=await axios.put(`https://validacionback-production.up.railway.app/api/admins/update/${usuario}`,{
         folios:folios})
       return data.response
       } catch (error) {
