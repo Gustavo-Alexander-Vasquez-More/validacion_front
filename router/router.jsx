@@ -66,10 +66,11 @@ import VeracruzVal from '../src/pages/validacionLicencias/veracruzVal'
 import PueblaVal from "../src/pages/validacionLicencias/pueblaVal";
 import MichoacanVal from '../src/pages/validacionLicencias/michoacanVal'
 import CdmxVal from '../src/pages/validacionLicencias/cdmxVal'
+import Protect from '../src/components/protectedLogin.jsx'
 const router = createBrowserRouter([
     {
         path:"/",
-        element:<Index/>,
+        element:<Index/>
     },
     {
         path:"/consulta/aguasCalientes",
@@ -200,7 +201,7 @@ const router = createBrowserRouter([
         element:<Zacatecas/>,
     },
     {
-        path:"panelAdministrador",
+        path:"/panelAdministrador",
         element:<PanelAdmin/>,
     },
     {

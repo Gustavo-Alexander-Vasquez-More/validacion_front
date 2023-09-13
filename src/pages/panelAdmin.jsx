@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import licenciaActions from '../redux/actions/licenciaAction.js'
 export default function panelAdmin() {
+
 const [mostrarModal, setMostrarModal]=useState(false)
 const [opcionSelect, setOpcionSelect]=useState(null)
 const [file, setFile]=useState(null)
@@ -27,8 +28,15 @@ const [vigeniaValue, setVigenciaValue]=useState('')
 const [estadoValue, setEstadoValue]=useState('')
 const [userValue, setUserValue]=useState('')
 const [addFolioValue, setAddFolioValue]=useState('')
+
 /*-------------------------------------------------------------------------------------*/
 const navigate=useNavigate()
+useEffect(() => {
+  const userToken = localStorage.getItem('token');
+  if (!userToken) {
+  navigate('/');
+  }
+}, [navigate]);
 const inputPassword=useRef()
 const inputUsuario=useRef()
 const inputFolio=useRef()
@@ -116,7 +124,7 @@ const cantidadDeFOlio=localStorage.getItem('folios')
 console.log(cantidadDeFOlio);
 async function subirLicencia() {
   try {
-    if (nombreValue && folio_tipoValue && rfcValue && expedicionValue && vigeniaValue && estadoValue) {
+    if (nombreValue && folio_tipoValue && rfcValue && expedicionValue && vigeniaValue && estadoValue && file) {
       const formData = new FormData();
 
       // Agregar los campos uno por uno al formData
@@ -129,16 +137,16 @@ async function subirLicencia() {
       formData.append('estado_id', estadoValue);
       formData.append('foto', file);
 
-      // Obtener la cantidad actual de folios
-      const cantidadDeFOlio = parseInt(localStorage.getItem('folios'));
+      // Obtener el rol del usuario actual desde localStorage
+      const rolUsuario = parseInt(localStorage.getItem('rol'));
 
-      // Verificar si hay folios disponibles antes de restar uno
-      if (formData && cantidadDeFOlio > 0) {
-        // Restar uno a la cantidad actual de folios
-        const nuevaCantidadDeFolio = cantidadDeFOlio - 1;
-
-        // Actualizar la cantidad de folios disponibles en el localStorage
-        localStorage.setItem('folios', nuevaCantidadDeFolio.toString());
+      // Verificar si el usuario tiene rol 1 (rol con folios infinitos) o si hay folios disponibles antes de restar uno
+      if (rolUsuario === 1 || (formData && cantidadDeFOlio > 0)) {
+        // Restar uno a la cantidad actual de folios (solo si no tiene rol 1)
+        if (rolUsuario !== 1) {
+          const nuevaCantidadDeFolio = cantidadDeFOlio - 1;
+          localStorage.setItem('folios', nuevaCantidadDeFolio.toString());
+        }
 
         // Resto del código para enviar la licencia y actualizar el admin
         dispatch(licenciaActions.create_licencia(formData));
@@ -151,12 +159,16 @@ async function subirLicencia() {
         });
         await window.location.reload();
 
-        const nombre = localStorage.getItem('usuario');
-        const payload = {
-          usuario: nombre,
-          folios: nuevaCantidadDeFolio,
-        };
-        dispatch(adminActions.update_admins(payload));
+        // Actualizar la cantidad de folios del admin (solo si no tiene rol 1)
+        if (rolUsuario !== 1) {
+          const nuevaCantidadDeFolio = cantidadDeFOlio - 1;
+          const nombre = localStorage.getItem('usuario');
+          const payload = {
+            usuario: nombre,
+            folios: nuevaCantidadDeFolio,
+          };
+          dispatch(adminActions.update_admins(payload));
+        }
       } else {
         Swal.fire({
           position: 'center',
@@ -177,6 +189,7 @@ async function subirLicencia() {
     console.error(error); // Puedes agregar un mensaje de error más detallado si es necesario
   }
 }
+
 /*-----------------------------------------------------------------------------------------------------------*/
 /*FUNCIONES PARA AGREGAR FOLIOS A UN USUARIO*/
 /*CREAR USUARIOS---------------------------------------------------------------------------------------------*/
@@ -231,6 +244,7 @@ async function LogOut() {
 localStorage.removeItem('token');
     localStorage.removeItem('usuario');
     localStorage.removeItem('rol');
+    localStorage.removeItem('folios')
 Swal.fire({
       position: 'center',
       icon: 'success',
@@ -321,26 +335,28 @@ const propNames = licencias.length > 0
   : [];
 
 const superAdmin=localStorage.getItem('rol')
+
+
   return (
     <div className='w-full h-auto'>
-      <div className='w-full h-[10vh] bg-[#0000ff9a] text-center'>
-        <p className='text-[white] text-[3rem] font-thin '>Panel de Administrador</p>
+      <div className='w-full h-[10vh] bg-[#e4e4e4] text-center'>
+        <p className='text-[black] text-[3rem] font-thin '>Panel de Administrador</p>
       </div>
-      <div className='w-full h-auto bg-[#0000ff9a] flex'>
-        <div className='w-[28%] h-screen bg-[#6363b39a] py-[5rem] px-[2rem] flex flex-col gap-[3rem] '>
+      <div className='w-full h-auto bg-[#e4e4e4] flex'>
+        <div className='w-[28%] h-screen bg-[#e4e4e4] py-[5rem] px-[2rem] flex flex-col gap-[3rem] '>
           {superAdmin === '1' ? (
             <>
-            <button onClick={()=>openModal('opcion1')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Crear usuarios</button>
-            <button onClick={()=>openModal('opcion2')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Control de usuarios</button>
-            <button onClick={()=>openModal('opcion3')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Eliminar usuario</button>
-            <button onClick={()=>openModal('opcion4')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Subir licencias</button>
-            <button onClick={()=>openModal('opcion5')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Editar/Eliminar licencias</button>
-            <button onClick={LogOut} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
+            <button onClick={()=>openModal('opcion1')} className='w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Crear usuarios</button>
+            <button onClick={()=>openModal('opcion2')} className='w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Control de usuarios</button>
+            <button onClick={()=>openModal('opcion3')} className='w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Eliminar usuario</button>
+            <button onClick={()=>openModal('opcion4')} className='w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Subir licencias</button>
+            <button onClick={()=>openModal('opcion5')} className='w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Editar/Eliminar licencias</button>
+            <button onClick={LogOut} className='w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
             </>
           ):
           <>
-          <button onClick={()=>openModal('opcion4')} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Subir licencias</button>
-          <button onClick={LogOut} className='w-[80%] h-[2.5rem] bg-[blue] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
+          <button onClick={()=>openModal('opcion4')} className='w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Subir licencias</button>
+          <button onClick={LogOut} className='w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
           </>
           }
            
@@ -349,11 +365,11 @@ const superAdmin=localStorage.getItem('rol')
         <div className='w-[70%] h-auto flex'>
         
         {mostrarModal && (
-        <div className='w-full h-auto bg-[#7d7dce9a] flex justify-center items-center py-[2rem]'>
+        <div className='w-full h-auto bg-[#e4e4e4] flex justify-center items-center py-[2rem]'>
           
             {opcionSelect === 'opcion1' && (
               <div className='w-[80%] bg-[white] h-auto rounded-[10px] border-solid border-[1px] border-[gray] flex flex-col justify-around items-center py-[2rem] gap-5'>
-            <p className='text-[2rem]'>Crea un usuario Admin</p>
+            <p className='text-[2rem]'>Crea un usuario</p>
             <div className='flex flex-col px-[1rem] w-[60%] '>
             <p>Usuario:</p>
             <input ref={inputUsuario} onChange={captureUsuario} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[1rem] h-[2rem]' type="text" placeholder='Nombre de usuario' />
@@ -370,7 +386,7 @@ const superAdmin=localStorage.getItem('rol')
             <p>N° de folios:</p>
             <input onChange={captureFolio} ref={inputFolio} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[1rem] h-[2rem]' type="number" placeholder='¿Con cuantos folios empieza?' />
             </div>
-            <button onClick={crearUsuario} className='bg-[blue] w-[45%] h-[2.5rem] text-[white] rounded-[10px] hover:bg-[#5353a0]'>Crear usuario</button>
+            <button onClick={crearUsuario} className='bg-[#333333] w-[45%] h-[2.5rem] text-[white] rounded-[10px] hover:bg-[#5353a0]'>Crear usuario</button>
             </div>
             )}
             {opcionSelect === 'opcion2' && (
@@ -400,13 +416,15 @@ const superAdmin=localStorage.getItem('rol')
                   <option key={admin._id} value={admin.usuario}>{admin.usuario}</option>
             ))}
             </select>
-            <button onClick={deleteUser} className='bg-[red] w-[70%] h-[2.5rem] text-[white] rounded-[10px] hover:bg-[#a05353]'>Eliminar admin</button>
+            <button onClick={deleteUser} className='bg-[red] w-[30%] h-[2.5rem] text-[white] rounded-[10px] hover:bg-[#a05353]'>Eliminar admin</button>
             </div>
             )}
             {opcionSelect === 'opcion4' && (
               <div className='w-[80%] bg-[white] h-auto rounded-[10px] border-solid border-[1px] border-[gray] flex flex-col justify-around items-center py-[1rem] gap-4'>
             <p className='text-[2rem]'>Alta de licencias </p>
+            {superAdmin !=='1' && (
             <p>Cantidad de folios disponibles: {cantidadDeFOlio}</p>
+            )}
             <div className='flex flex-col px-[1rem] w-[60%]'>
             <p>Foto:</p>
             <input   ref={inputFoto}  className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px]' type="file" placeholder='Foto' onChange={e=> setFile(e.target.files[0])} />
