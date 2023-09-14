@@ -52,7 +52,7 @@ function formatearFecha(fechaISO8601) {
     <div className='absolute lg:w-[25%] lg:h-[80vh] sm:right-[55%] sm:h-[80vh]  lg:right-[60%] border-solid border-[1px] border-[#c7c4c4] bg-[white] animate-rotate-x'>
     <div className='w-full h-[5vh]  text-[#4b4b9b] flex justify-center items-center text-[1.2rem] border-solid border-[1px] border-[#c7c4c4]'>Datos personales</div>
     <div className='w-full h-[15vh] flex justify-center py-[1rem]'>
-        <img className='h-[13vh] w-[6rem]' src={licenciaEncontrada ? `http://localhost:8084/${licenciaEncontrada.foto}` : 'nothing' } alt="" />
+        <img className='h-[13vh] w-[6rem]' src={licenciaEncontrada ? licenciaEncontrada.foto : 'nothing'} alt="" />
     </div>
     <div className='w-full h-[49vh] px-[1.5rem] flex flex-col gap-1 py-[0.5rem]'>
     <p className='text-[#4b4b9b]'>NOMBRE COMPLETO</p>
