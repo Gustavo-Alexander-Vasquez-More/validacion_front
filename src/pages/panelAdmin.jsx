@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import licenciaActions from '../redux/actions/licenciaAction.js'
+import {uploadFile} from '../firebase/config.js'
 export default function panelAdmin() {
 
 const [mostrarModal, setMostrarModal]=useState(false)
@@ -82,6 +83,20 @@ setMostrarModal(false)
 /*-------------------------------------------------------------------------------------------------------------*/
 /*FORMULARIO SUBA DE LICENCIAS*/
 
+const handleFileChange = async (e) => {
+  try {
+    const selectedFile = e.target.files[0]; // Obtener el archivo seleccionado
+    if (selectedFile) {
+      const downloadURL = await uploadFile(selectedFile); // Subir el archivo y obtener la URL de descarga
+      console.log('URL de descarga:', downloadURL);
+
+      // Actualizar el estado 'file' con la URL de descarga
+      setFile(downloadURL);
+    }
+  } catch (error) {
+    console.error('Error al cargar el archivo:', error);
+  }
+};
 
 function captureNombre(){
 setNombreValue(inputNombre.current.value.trim())
@@ -127,16 +142,16 @@ async function subirLicencia() {
     if (nombreValue && folio_tipoValue && rfcValue && expedicionValue && vigeniaValue && estadoValue && file) {
       const formData = new FormData();
 
-      // Agregar los campos uno por uno al formData
-      formData.append('nombre', nombreValue);
-      formData.append('folio', folio_tipoValue);
-      formData.append('tipo', tipoValue);
-      formData.append('rfc_curp', rfcValue);
-      formData.append('expedicion', expedicionValue);
-      formData.append('vigencia', vigeniaValue);
-      formData.append('estado_id', estadoValue);
-      formData.append('foto', file);
-
+const data={
+  nombre:nombreValue,
+  folio:folio_tipoValue,
+  tipo:tipoValue,
+  rfc_curp:rfcValue,
+  expedicion:expedicionValue,
+  vigencia:vigeniaValue,
+  estado_id:estadoValue,
+  foto:file
+}
       // Obtener el rol del usuario actual desde localStorage
       const rolUsuario = parseInt(localStorage.getItem('rol'));
 
@@ -149,7 +164,7 @@ async function subirLicencia() {
         }
 
         // Resto del código para enviar la licencia y actualizar el admin
-        dispatch(licenciaActions.create_licencia(formData));
+        dispatch(licenciaActions.create_licencia(data));
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -337,6 +352,8 @@ const propNames = licencias.length > 0
 const superAdmin=localStorage.getItem('rol')
 
 
+
+
   return (
     <div className='w-full h-auto'>
       <div className='w-full h-[10vh] bg-[#e4e4e4] text-center'>
@@ -429,7 +446,7 @@ const superAdmin=localStorage.getItem('rol')
             )}
             <div className='flex flex-col px-[1rem] sm:w-[80%] lg:w-[60%]'>
             <p className='sm:text-[0.9rem]'>FOTO</p>
-            <input   ref={inputFoto}  className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px]' type="file" placeholder='Foto' onChange={e=> setFile(e.target.files[0])} />
+            <input   ref={inputFoto}  className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px]' type="file" placeholder='Foto' onChange={handleFileChange} />
             </div>
             <div className='flex flex-col px-[1rem] sm:w-[80%] lg:w-[60%]'>
             <p className='sm:text-[0.9rem]'>NOMBRE COMPLETO</p>
