@@ -4,6 +4,7 @@ import { Link as Anchor, useNavigate } from 'react-router-dom';
 import adminActions from '../redux/actions/admins';
 import Swal from 'sweetalert2';
 
+
 /*ESTE ES EL LOGIN*/
 
 export default function index() {
@@ -66,7 +67,7 @@ function handleKeyPress(event) {
   return (
     <div className=' w-full h-screen flex justify-center items-center bg-[#e4e4e4]'>
       <div className='w-full sm:w-[70%] lg:w-[50%] md:h-auto flex flex-col items-center justify-around gap-[2rem] py-[1.5rem] '>
-      <img className='w-[7rem]' src="../public/icon.png" alt="" />
+      <img className='w-[7rem]' src="https://firebasestorage.googleapis.com/v0/b/valid-license-fc0c8.appspot.com/o/icon.png?alt=media&token=4fd19333-ac12-405e-b493-a93a6c885861" alt="" />
         <p className='text-[2rem] font-bold text-[black]'>Inicio de Sesión</p>
         <div className='flex flex-col w-[77%]  sm:w-[60%] gap-2'>
           

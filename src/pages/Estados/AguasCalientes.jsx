@@ -49,8 +49,8 @@ console.log(foundLicencia );
       <div className='w-full h-[8vh] bg-[#1f1f70] flex items-center justify-end px-[2rem]'>
         <p className=' text-[white] font-medium'>Aguas Calientes - Gobierno del Estado.</p>
       </div>
-      <div className='w-full h-[96vh]  bg-[url("/public/AguasCalientes/textura.jpg")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
-        <img className='lg:w-[25rem] sm:w-[15rem]' src="/public/AguasCalientes/logo.png" alt="" />
+      <div className='w-full h-[96vh]  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/AguasCalientes%2Ftextura.jpg?alt=media&token=da6e78bf-0360-48ea-8cfc-763b040b36bd")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
+        <img className='lg:w-[25rem] sm:w-[15rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/AguasCalientes%2Flogo.png?alt=media&token=6ff8f48b-71b1-485f-81a7-8f297923b129" alt="" />
         <div className='bg-[white] border-solid border-[1px] border-[#1f1f70] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
           <p className=' font-semibold text-[1.5rem]'>Consulta</p>
           <p>N° Folio</p>

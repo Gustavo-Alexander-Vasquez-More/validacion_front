@@ -50,8 +50,8 @@ async function navigateValidation() {
     <div className='w-full h-[8vh] bg-[#4b4a4a] flex items-center justify-end px-[2rem]'>
       <p className=' text-[white] font-medium'>Morelos - Gobierno del Estado.</p>
     </div>
-    <div className='w-full h-[96vh]  bg-[url("/public/Morelos/textura.jpg")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
-      <img className='lg:w-[35rem] sm:w-[35rem]' src="/public/Morelos/logo.png" alt="" />
+    <div className='w-full h-[96vh]  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Morelos%2Ftextura.jpg?alt=media&token=2113aedb-34a1-4d4b-96e6-78cc86cdbfb6")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
+      <img className='lg:w-[35rem] sm:w-[35rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Morelos%2Flogo.png?alt=media&token=2d382bbc-de88-4b33-b21d-f318568a9904" alt="" />
       <div className='bg-[white] border-solid border-[1px] border-[#4b4a4a] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
         <p className=' font-semibold text-[1.5rem]'>Consulta</p>
         <p>N° Folio</p>
