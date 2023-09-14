@@ -50,8 +50,8 @@ async function navigateValidation() {
     <div className='w-full h-[8vh] bg-[#9b283b] flex items-center justify-end px-[2rem]'>
       <p className=' text-[white] font-medium'>Quintana Roo - Gobierno del Estado.</p>
     </div>
-    <div className='w-full h-[96vh]  bg-[url("/public/QuintanaRoo/textura.jpg")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
-      <img className='lg:w-[20rem] sm:w-[20rem]' src="/public/QuintanaRoo/logo.png" alt="" />
+    <div className='w-full h-[96vh]  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/QuintanaRoo%2Ftextura.jpg?alt=media&token=96c3322a-c62d-427a-b39e-9b2436569da2")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
+      <img className='lg:w-[20rem] sm:w-[20rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/QuintanaRoo%2Flogo.png?alt=media&token=dd5b990f-79f2-4a2d-a3ee-74fabeb8023f" alt="" />
       <div className='bg-[white] border-solid border-[1px] border-[#9b283b] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
         <p className=' font-semibold text-[1.5rem]'>Consulta</p>
         <p>N° Folio</p>

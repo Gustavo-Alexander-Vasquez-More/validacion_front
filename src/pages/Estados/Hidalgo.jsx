@@ -51,8 +51,8 @@ async function navigateValidation() {
     <div className='w-full h-[8vh] bg-[#6e6a2b] flex items-center justify-end px-[2rem]'>
       <p className=' text-[white] font-medium'>Hidalgo - Gobierno del Estado.</p>
     </div>
-    <div className='w-full h-[96vh]  bg-[url("/public/Hidalgo/textura.jpg")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
-      <img className='lg:w-[25rem] sm:w-[20rem]' src="/public/Hidalgo/logo.png" alt="" />
+    <div className='w-full h-[96vh]  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Hidalgo%2Ftextura.jpg?alt=media&token=6265f8be-c594-4690-a657-43288c972487")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
+      <img className='lg:w-[25rem] sm:w-[20rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Hidalgo%2Flogo.png?alt=media&token=580f8df8-f618-4c6a-95be-a43ebf4a4a06" alt="" />
       <div className='bg-[white] border-solid border-[1px] border-[#6e6a2b] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
         <p className=' font-semibold text-[1.5rem]'>Consulta</p>
         <p>N° Folio</p>

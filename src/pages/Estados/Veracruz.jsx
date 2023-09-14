@@ -49,8 +49,8 @@ async function navigateValidation() {
     <div className='w-full h-[8vh] bg-[#421111] flex items-center justify-end px-[2rem]'>
       <p className=' text-[white] font-medium'>Veracruz - Gobierno del Estado.</p>
     </div>
-    <div className='w-full h-[96vh]  bg-[url("/public/Veracruz/textura.jpg")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
-      <img className='lg:w-[20rem] sm:w-[15rem]' src="/public/Veracruz/logo.png" alt="" />
+    <div className='w-full h-[96vh]  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Veracruz%2Ftextura.jpg?alt=media&token=0c33b7e8-0338-4011-9a46-3fd64a6f896f")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
+      <img className='lg:w-[20rem] sm:w-[15rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Veracruz%2Flogo.png?alt=media&token=e1e00656-3ec9-49d9-9b9a-4bb3ffaec8d7" alt="" />
       <div className='bg-[white] border-solid border-[1px] border-[#421111] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
         <p className=' font-semibold text-[1.5rem]'>Consulta</p>
         <p>N° Folio</p>
