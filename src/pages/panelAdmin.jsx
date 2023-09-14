@@ -367,7 +367,6 @@ const superAdmin=localStorage.getItem('rol')
             <button onClick={()=>openModal('opcion2')} className='sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Control de usuarios</button>
             <button onClick={()=>openModal('opcion3')} className='sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Eliminar usuario</button>
             <button onClick={()=>openModal('opcion4')} className='sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Subir licencias</button>
-            <button onClick={()=>openModal('opcion5')} className='sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Editar/Eliminar licencias</button>
             <button onClick={LogOut} className='sm:text-[0.8rem] sm:w-[90%] lg:w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
             </>
           ):
