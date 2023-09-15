@@ -42,13 +42,13 @@ console.log(foundLicencia );
 }
   return (
     <div className='w-full h-screen flex flex-col'>
-      <div className='w-full h-[8vh] bg-[#9e9627] flex items-center justify-end px-[2rem]'>
-        <p className=' text-[white] font-medium'>Chiapas - Gobierno del Estado.</p>
+      <div className='w-full h-[8vh] bg-[#9e9627] flex items-center sm:justify-end justify-center px-[2rem]'>
+        <p className=' text-[white] sm:font-medium text-[0.8rem] sm:text-[1rem]'>Chiapas - Gobierno del Estado.</p>
       </div>
-      <div className='w-full h-[96vh]  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Chiapas%2Ftextura.jpg?alt=media&token=395a671f-0ba1-4e51-a539-e1312ee15a23")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
-        <img className='lg:w-[20rem] sm:w-[15rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Chiapas%2Flogo.png?alt=media&token=a73fd1a7-307b-460f-8b97-2b2ce334480e" alt="" />
+      <div className='w-full h-[96vh]  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Chiapas%2Ftextura.jpg?alt=media&token=395a671f-0ba1-4e51-a539-e1312ee15a23")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] sm:gap-5 gap-10'>
+        <img className='lg:w-[20rem] sm:w-[15rem] w-[12rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Chiapas%2Flogo.png?alt=media&token=a73fd1a7-307b-460f-8b97-2b2ce334480e" alt="" />
         <div className='bg-[white] border-solid border-[1px] border-[#9e9627] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
-          <p className=' font-semibold text-[1.5rem]'>Consulta</p>
+          <p className=' font-semibold sm:text-[1.5rem] text-[1.2rem]'>Consulta</p>
           <p>N° Folio</p>
           <input
             ref={inputSearch}
