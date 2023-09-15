@@ -51,7 +51,7 @@ async function navigateValidation() {
     <div className='w-full h-[8vh] bg-[#282188] flex items-center sm:justify-end justify-center px-[2rem]'>
       <p className=' text-[white] sm:font-medium text-[0.8rem] sm:text-[1rem]'>San Luis De Potosí - Gobierno del Estado.</p>
     </div>
-    <div className='w-full h-[96vh]  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/SanLuisPotosi%2Ftextura.jpg?alt=media&token=144afec4-89b9-4015-8b95-89ccc614defb")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] sm:gap-5 gap-7'>
+    <div className='w-full h-[96vh] bg-no-repeat bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/SanLuisPotosi%2Ftextura.jpg?alt=media&token=144afec4-89b9-4015-8b95-89ccc614defb")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] sm:gap-5 gap-7'>
       <img className='lg:w-[20rem] sm:w-[20rem] sm:h-[10rem] w-[10rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/SanLuisPotosi%2Flogo.png?alt=media&token=5aa6d680-8433-46f4-9c13-f8f3248bcb2e" alt="" />
       <div className='bg-[white] border-solid border-[1px] border-[#282188] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
         <p className=' font-semibold sm:text-[1.5rem] text-[1.2rem]'>Consulta</p>
