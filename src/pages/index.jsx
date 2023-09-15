@@ -65,23 +65,28 @@ function handleKeyPress(event) {
 }
 
   return (
-    <div className=' w-full h-screen flex justify-center items-center bg-[#e4e4e4]'>
+    <div className=' w-full h-screen flex flex-col justify-center items-center bg-[#e4e4e4]'>
       <div className='w-full sm:w-[70%] lg:w-[50%] md:h-auto flex flex-col items-center justify-around gap-[2rem] py-[1.5rem] '>
-      <img className='w-[7rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/icon.png?alt=media&token=07ad767c-674e-488d-a6d0-9d26b9ae504d" alt="" />
-        <p className='text-[2rem] font-bold text-[black]'>Inicio de Sesión</p>
+      <img className='animate-jump-in w-[7rem] hover:animate-bounce' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/icon.png?alt=media&token=07ad767c-674e-488d-a6d0-9d26b9ae504d" alt="" />
+        <p className='animate-fade text-[2rem] font-bold text-[black]'>Inicio de Sesión</p>
         <div className='flex flex-col w-[77%]  sm:w-[60%] gap-2'>
           
         <p className=' font-semibold'>Usuario:</p>
-        <input onKeyDown={handleKeyPress} required ref={inputUser} onChange={captureUser} className='h-[2.5rem] w-[100%] placeholder:text-center rounded-[10px] px-[1rem] border-solid border-[1px] border-[gray]' type="text"  placeholder='Escriba su nombre de usuario'/>
+        <input onKeyDown={handleKeyPress} required ref={inputUser} onChange={captureUser} className='hover:border-[#5a5a5a] animate-fade h-[2.5rem] w-[100%] placeholder:text-center rounded-[10px] px-[1rem] border-solid border-[1px] border-[gray]' type="text"  placeholder='Escriba su nombre de usuario'/>
         </div>
         <div className='flex flex-col  w-[77%]  sm:w-[60%] gap-2'>
-        <p className=' font-semibold'>Contraseña:</p>
-        <input onKeyDown={handleKeyPress} required ref={inputPassword} onChange={capturePassword} className='h-[2.5rem] w-[100%] placeholder:text-center rounded-[10px] px-[1rem] border-solid border-[1px] border-[gray]' type="password" placeholder='Escriba su contraseña'/>
+        <p className='animate-fade font-semibold'>Contraseña:</p>
+        <input onKeyDown={handleKeyPress} required ref={inputPassword} onChange={capturePassword} className='hover:border-[#5a5a5a] animate-fade h-[2.5rem] w-[100%] placeholder:text-center rounded-[10px] px-[1rem] border-solid border-[1px] border-[gray]' type="password" placeholder='Escriba su contraseña'/>
         </div>
-        <Anchor onClick={logIn}  className='bg-[#333333] text-[white] py-[0.5rem] w-[50%] sm:w-[30%] rounded-[10px] text-center'>
+        <Anchor onClick={logIn}  className='bg-[#333333] text-[white] py-[0.5rem] w-[50%] sm:w-[30%] rounded-[10px] text-center animate-fade hover:animate-fade hover:bg-[#5a5a5a]'>
         Ingresar
         </Anchor>
       </div>
+      <div className='w-full h-[30vh] flex items-end justify-end px-[3rem] py-[3rem]'>
+    <Anchor target='blank' to='https://wa.me/526644267853'>
+      <img  className='hover:animate-wiggle-more w-[4rem]' src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/767px-WhatsApp.svg.png" alt="" />
+      </Anchor>
+  </div>
     </div>
   );
 }

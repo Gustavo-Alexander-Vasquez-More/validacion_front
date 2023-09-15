@@ -411,7 +411,7 @@ const superAdmin=localStorage.getItem('rol')
             
             <div className='w-[90%] bg-[white] h-auto rounded-[10px] border-solid border-[1px] border-[gray] flex flex-col justify-around items-center py-[2rem] gap-5'>
             <p className='text-[2rem]'>Panel de usuarios</p>
-            <p>(Agrega el numero de folios para un Admin)</p>
+            <p>Elige el usuario a asignar Folios</p>
             <div className='w-[90%] h-[30vh] bg-[black] flex flex-col justify-around rounded-[5px] px-[1.5rem]'>
             <p className='text-[white]' >Usuario:</p>
             <select onChange={capturarUsuario} ref={userSelect} className='w-[15rem]'>

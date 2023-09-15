@@ -46,13 +46,13 @@ async function navigateValidation() {
 }
   return (
     <div className='w-full h-screen flex flex-col'>
-    <div className='w-full h-[8vh] bg-[#1b1b66] flex items-center justify-end px-[2rem]'>
-      <p className=' text-[white] font-medium'>Yucatán - Gobierno del Estado.</p>
+    <div className='w-full h-[8vh] bg-[#1b1b66] flex items-center sm:justify-end justify-center px-[2rem]'>
+      <p className=' text-[white] sm:font-medium text-[0.8rem] sm:text-[1rem]'>Yucatán - Gobierno del Estado.</p>
     </div>
-    <div className='w-full h-[96vh]  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Yucatan%2Ftextura.jpg?alt=media&token=03a7ac0e-5700-447d-beab-f44df8fb6abe")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] gap-5'>
-      <img className='lg:w-[20rem] sm:w-[15rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Yucatan%2Flogo.png?alt=media&token=2fc3a933-dd3e-4c00-8985-f96089eecc96" alt="" />
+    <div className='w-full h-[96vh]  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Yucatan%2Ftextura.jpg?alt=media&token=03a7ac0e-5700-447d-beab-f44df8fb6abe")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] sm:gap-5 gap-10'>
+      <img className='lg:w-[20rem] sm:w-[15rem] w-[12rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Yucatan%2Flogo.png?alt=media&token=87631a03-8cc8-4726-b603-93ac18efaeb1" alt="" />
       <div className='bg-[white] border-solid border-[1px] border-[#1b1b66] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
-        <p className=' font-semibold text-[1.5rem]'>Consulta</p>
+        <p className=' font-semibold sm:text-[1.5rem] text-[1rem]'>Consulta</p>
         <p>N° Folio</p>
         <input
           ref={inputSearch}
