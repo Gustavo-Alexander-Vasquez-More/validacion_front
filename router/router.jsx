@@ -66,7 +66,7 @@ import VeracruzVal from '../src/pages/validacionLicencias/veracruzVal'
 import PueblaVal from "../src/pages/validacionLicencias/pueblaVal";
 import MichoacanVal from '../src/pages/validacionLicencias/michoacanVal'
 import CdmxVal from '../src/pages/validacionLicencias/cdmxVal'
-import Protect from '../src/components/protectedLogin.jsx'
+
 const router = createBrowserRouter([
     {
         path:"/",
@@ -333,6 +333,5 @@ const router = createBrowserRouter([
         path:"/validacion/cdmx/:folio",
         element:<CdmxVal/>,
     },
-    
 ])
 export default router

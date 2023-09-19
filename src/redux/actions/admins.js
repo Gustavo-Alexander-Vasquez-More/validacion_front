@@ -5,6 +5,7 @@ const create_admins = createAsyncThunk(
     async(datos)=>{
         try {
         const {data}=await axios.post('https://validacionback-production.up.railway.app/api/admins/create', datos)
+        console.log(data);
       return data.response
         } catch (error) {
         }
