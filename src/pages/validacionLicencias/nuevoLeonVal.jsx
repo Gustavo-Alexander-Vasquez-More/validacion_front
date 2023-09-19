@@ -64,7 +64,7 @@ export default function nuevoLeonVal() {
     <p className='text-[#8f962e] sm:text-[1rem] text-[0.8rem]'>FECHA DE EXPEDICIÓN</p>
     <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? formatearFecha(licenciaEncontrada.expedicion) : 'Fecha no encontrada'}</p></div>
     <p className='text-[#8f962e] sm:text-[1rem] text-[0.8rem]'>VIGENCIA</p>
-    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? formatearFecha(licenciaEncontrada.vigencia) : 'Fecha no encontrada'}</p></div>
+    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? licenciaEncontrada.vigencia : 'Fecha no encontrada'}</p></div>
     </div>
     </div>
     <div className='bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/NuevoLeon%2F2.png?alt=media&token=28df5c08-d935-45bb-b349-3b0a1e936bc6")] w-full h-[30vh] bg-contain bg-no-repeat'></div>

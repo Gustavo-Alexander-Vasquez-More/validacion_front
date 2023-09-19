@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import licenciaActions from '../../redux/actions/licenciaAction.js';
 import Swal from 'sweetalert2';
 import adminActions from '../../redux/actions/admins.js';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import es from 'date-fns/locale/es';
 export default function altaLicencias() {
 const dispatch=useDispatch()
 const [file, setFile]=useState(null)
@@ -37,15 +40,8 @@ function captureTipe(){
 function captureRfc(){
     setRfcValue(inputRfc.current.value.trim())
 }
-function captureExpedicion() {
-const fechaSeleccionada = inputExpedicion.current.value; 
-const partesFecha = fechaSeleccionada.split('-');
-const dia = partesFecha[2];
-const mes = partesFecha[1];
-const año = partesFecha[0];
-const fechaISO8601 = `${año}-${mes}-${dia}`;
-setExpedicionValue(fechaISO8601);
-}
+
+console.log(expedicionValue);
 function captureVigencia(){
 const fechaSeleccionada = inputVigencia.current.value; 
 const partesFecha = fechaSeleccionada.split('-');
@@ -158,11 +154,18 @@ setFile(downloadURL);
             </div>
             <div className='flex flex-col px-[1rem] sm:w-[80%] lg:w-[60%]'>
             <p className='sm:text-[0.9rem]'>FECHA DE EXPEDICIÓN</p>
-            <input onChange={captureExpedicion} ref={inputExpedicion} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[1rem] h-[2rem]' type="date"  />
+            <DatePicker
+  selected={expedicionValue}
+  onChange={date => setExpedicionValue(date)}
+  className='w-[99%] border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:text-[black] h-[2rem]'
+  placeholderText='dd/mm/aaaa'
+  dateFormat='dd/MM/yyyy'
+  locale={es} 
+/>
             </div>
             <div className='flex flex-col px-[1rem] sm:w-[80%] lg:w-[60%]'>
             <p className='sm:text-[0.9rem]'>VIGENCIA</p>
-            <input onChange={captureVigencia} ref={inputVigencia} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[1rem] h-[2rem]' type="date"  />
+            <input onChange={captureVigencia} ref={inputVigencia} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:text-[black] h-[2rem]' type="text" placeholder='dd/mm/aaaa | permanente | no permanente' />
             </div>
             
             <div  className='flex flex-col px-[1rem] sm:w-[80%] lg:w-[60%]'>
