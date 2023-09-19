@@ -65,7 +65,7 @@ function formatearFecha(fechaISO8601) {
     <p className='text-[#848d2f] sm:text-[1rem] text-[0.8rem]'>FECHA DE EXPEDICIÓN</p>
     <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? formatearFecha(licenciaEncontrada.expedicion) : 'Fecha no encontrada'}</p></div>
     <p className='text-[#848d2f] sm:text-[1rem] text-[0.8rem]'>VIGENCIA</p>
-    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? formatearFecha(licenciaEncontrada.vigencia) : 'Fecha no encontrada'}</p></div>
+    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? licenciaEncontrada.vigencia : 'Fecha no encontrada'}</p></div>
     </div>
     </div>
     <div className='bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Chiapas%2F2.png?alt=media&token=3d369523-15c7-47bf-8cf6-551c8968db0a")] w-full h-[30vh] bg-contain bg-no-repeat'></div>

@@ -63,7 +63,7 @@ export default function coahuilaVal() {
     <p className='text-[#648d2f] sm:text-[1rem] text-[0.8rem]'>FECHA DE EXPEDICIÓN</p>
     <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? formatearFecha(licenciaEncontrada.expedicion) : 'Fecha no encontrada'}</p></div>
     <p className='text-[#648d2f] sm:text-[1rem] text-[0.8rem]'>VIGENCIA</p>
-    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? formatearFecha(licenciaEncontrada.vigencia) : 'Fecha no encontrada'}</p></div>
+    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? licenciaEncontrada.vigencia : 'Fecha no encontrada'}</p></div>
     </div>
     </div>
     <div className='bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Coahuila%2F2.png?alt=media&token=fd1d6034-4726-4e90-834e-2f766c83b85d")] w-full h-[30vh] bg-contain bg-no-repeat'></div>
