@@ -45,7 +45,7 @@ export default function pueblaVal() {
     </div>
     <div className='w-full h-[90vh] flex'>
     <div className='lg:w-[60%] lg:h-[90vh] flex sm:items-end lg:py-[2rem] sm:py-[1.5rem]  w-full justify-center items-center'>
-    <div className='h-[70vh] absolute lg:w-[25%] lg:h-[80vh] sm:right-[55%] sm:h-[80vh]  lg:right-[60%] border-solid border-[1px] border-[#c7c4c4] bg-[white] animate-rotate-x rounded-[5px]'>
+    <div className='w-[80%] sm:w-[30%] h-[70vh] absolute lg:w-[25%] lg:h-[80vh] sm:right-[55%] sm:h-[80vh]  lg:right-[60%] border-solid border-[1px] border-[#c7c4c4] bg-[white] animate-rotate-x rounded-[5px]'>
     <div className='w-full h-[5vh]  text-[#4e4e4e] flex justify-center items-center text-[1.2rem] border-solid border-[1px] border-[#c7c4c4]'>Datos personales</div>
     <div className='w-full h-[15vh] flex justify-center py-[1rem]'>
         <img className='h-[13vh] w-[6rem]' src={licenciaEncontrada ? licenciaEncontrada.foto : 'nothing' } alt="" />
