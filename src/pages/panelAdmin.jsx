@@ -72,7 +72,7 @@ export default function panelAdmin() {
     setMenu(false);
   }
 return (
-  <div className='w-full h-auto'>
+  <div className='w-full h-auto bg-[#e4e4e4]'>
   <div className="w-full h-[10vh] bg-[#e4e4e4] flex items-center  relative">
     <Anchor className="px-[2rem]" onClick={openMenu}>
       <svg
@@ -122,7 +122,7 @@ return (
         ):
         <>
         <button onClick={()=>openModal('opcion4')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Subir licencias</button>
-        <button className='py-[0.5rem] text-[0.8rem] sm:text-[0.8rem] sm:w-[90%] lg:w-[80%]  bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
+        <button onClick={LogOut} className='py-[0.5rem] text-[0.8rem] sm:text-[0.8rem] sm:w-[90%] lg:w-[80%]  bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
         </>
         }
         </div>
