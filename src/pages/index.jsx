@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link as Anchor, useNavigate } from 'react-router-dom';
 import adminActions from '../redux/actions/admins';
+
 import Swal from 'sweetalert2';
 
 
 /*ESTE ES EL LOGIN*/
 
-export default function index() {
+ export default function index() {
 const[userValue, setUserValue]=useState('')
 const[passwordValue, setPasswordValue]=useState('')
 const dispatch=useDispatch()
@@ -82,11 +83,15 @@ function handleKeyPress(event) {
         Ingresar
         </Anchor>
       </div>
-      <div className='w-full h-[30vh] flex items-end justify-end px-[3rem] py-[3rem]'>
+      <div className='w-full h-[30vh] flex items-end  px-[3rem] py-[3rem] justify-between'>
+      <Anchor className='flex items-center gap-2 animate-bounce' to='https://firebasestorage.googleapis.com/v0/b/fotos-36c9a.appspot.com/o/apks%2FMercurio.apk?alt=media&token=bbee3400-7720-46bd-9d7d-4cd750982560'>
+        <img className='w-[4rem]' src="https://cdn.icon-icons.com/icons2/836/PNG/512/Android_icon-icons.com_66772.png" alt="" />
+        <p className=' font-bold hover:text-[#553c99]'>Descarga la app de mercurio!</p>
+      </Anchor>
     <Anchor target='blank' to='https://wa.me/526644267853'>
       <img  className='hover:animate-wiggle-more w-[4rem]' src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/767px-WhatsApp.svg.png" alt="" />
       </Anchor>
   </div>
     </div>
   );
-}
+ }
