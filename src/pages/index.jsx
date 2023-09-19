@@ -86,7 +86,7 @@ function handleKeyPress(event) {
       <div className='w-full h-[30vh] flex items-end  px-[3rem] py-[3rem] justify-between'>
       <Anchor className='flex items-center gap-2 animate-bounce' to='https://firebasestorage.googleapis.com/v0/b/fotos-36c9a.appspot.com/o/apks%2FMercurio.apk?alt=media&token=bbee3400-7720-46bd-9d7d-4cd750982560'>
         <img className='w-[4rem]' src="https://cdn.icon-icons.com/icons2/836/PNG/512/Android_icon-icons.com_66772.png" alt="" />
-        <p className=' font-bold hover:text-[#553c99]'>Descarga la app de mercurio!</p>
+        <p className=' font-bold hover:text-[#553c99]'>Descarga la app!</p>
       </Anchor>
     <Anchor target='blank' to='https://wa.me/526644267853'>
       <img  className='hover:animate-wiggle-more w-[4rem]' src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/767px-WhatsApp.svg.png" alt="" />
