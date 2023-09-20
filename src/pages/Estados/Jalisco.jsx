@@ -50,7 +50,7 @@ async function navigateValidation() {
     <div className='w-full h-[8vh] bg-[#646464] flex items-center sm:justify-end justify-center px-[2rem]'>
       <p className=' text-[white] sm:font-medium text-[0.8rem] sm:text-[1rem]'>Jalisco - Gobierno del Estado.</p>
     </div>
-    <div className='w-full h-screen bg-no-repeat  bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Jalisco%2Ftextura.jpg?alt=media&token=171e4125-0b4a-4e46-94f3-ec82076e0d34")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-repeat lg:bg-contain lg:bg-center flex flex-col items-center py-[4rem] sm:gap-5 gap-10'>
+    <div className='bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/AguasCalientes%2Ftextura.png?alt=media&token=9a4ac3cc-9c8a-42d0-a9a3-b5c5a11b5e22")] bg-center  bg-cover w-full h-screen bg-no-repeat  lg:bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/BajaCaliforniaSur%2Ftextura.jpg?alt=media&token=b3689a98-807f-4cca-9063-3ca62ac58e4a")] sm:bg-center sm:bg-no-repeat sm:bg-cover lg:bg-no-repeat  lg:bg-fill xl:bg-no-repeat  xl:bg-fill 2xl:bg-repeat  2xl:bg-contain flex flex-col items-center py-[4rem] sm:gap-5 gap-10'>
       <img className='lg:w-[25rem] sm:w-[20rem] w-[15rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Jalisco%2Flogo.png?alt=media&token=904177e7-75e6-4186-a540-12c9086ae87b" alt="" />
       <div className='bg-[white] border-solid border-[1px] border-[#646464] lg:w-[30%] sm:w-[60%] h-auto justify-around py-[1rem] px-[1.5rem] rounded-[10px] flex flex-col gap-5'>
         <p className=' font-semibold sm:text-[1.5rem] text-[1.2rem]'>Consulta</p>

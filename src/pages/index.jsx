@@ -66,9 +66,9 @@ function handleKeyPress(event) {
 }
 
   return (
-    <div className=' w-full h-screen flex flex-col justify-center items-center bg-[#e4e4e4]'>
+    <div className=' w-full h-screen flex flex-col justify-center items-center bg-[white]'>
       <div className='w-full sm:w-[70%] lg:w-[50%] md:h-auto flex flex-col items-center justify-around gap-[2rem] py-[1.5rem] '>
-      <img className='animate-jump-in w-[7rem] hover:animate-bounce' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/icon.png?alt=media&token=07ad767c-674e-488d-a6d0-9d26b9ae504d" alt="" />
+      <img className='animate-jump-in w-[7rem] hover:animate-bounce' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/MERCURIO%20LOGO.png?alt=media&token=326bbed2-17d6-49b4-ba0b-ee3eb524963a" alt="" />
         <p className='animate-fade text-[2rem] font-bold text-[black]'>Inicio de Sesión</p>
         <div className='flex flex-col w-[77%]  sm:w-[60%] gap-2'>
           
@@ -84,12 +84,9 @@ function handleKeyPress(event) {
         </Anchor>
       </div>
       <div className='w-full h-[30vh] flex items-end  px-[3rem] py-[3rem] justify-between'>
-      <Anchor className='flex items-center gap-2 animate-bounce' to='https://firebasestorage.googleapis.com/v0/b/fotos-36c9a.appspot.com/o/apks%2FMercurio.apk?alt=media&token=bbee3400-7720-46bd-9d7d-4cd750982560'>
-        <img className='w-[4rem]' src="https://cdn.icon-icons.com/icons2/836/PNG/512/Android_icon-icons.com_66772.png" alt="" />
+      <Anchor className='flex items-center'  to='https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/MERCURIO%20(1).apk?alt=media&token=34c5340a-fa6b-4c93-8198-dbbc057afed5'>
+    <img className='w-[4rem]' src="https://cdn.icon-icons.com/icons2/836/PNG/512/Android_icon-icons.com_66772.png" alt="" />
         <p className=' font-bold hover:text-[#553c99]'>Descargar APP.</p>
-      </Anchor>
-    <Anchor target='blank' to='https://wa.me/526644267853'>
-      <img  className='hover:animate-wiggle-more w-[4rem]' src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/767px-WhatsApp.svg.png" alt="" />
       </Anchor>
   </div>
     </div>
