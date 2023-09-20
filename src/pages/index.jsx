@@ -41,7 +41,7 @@ try {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Successful Loged in!',
+        title: 'Bienvenido',
         showConfirmButton: false,
         timer: 3500
       })

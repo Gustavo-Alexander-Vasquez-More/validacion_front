@@ -43,7 +43,7 @@ export default function panelAdmin() {
   Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Sesión cerrada',
+        title: 'Hasta luego!',
         showConfirmButton: false,
         timer: 1500,
       });
