@@ -23,7 +23,7 @@ const inputNombre=useRef()
 const inputFolioForm=useRef()
 const inputTipe=useRef()
 const inputRfc=useRef()
-const inputExpedicion=useRef()
+
 const inputVigencia=useRef()
 const inputEstado=useRef()
 const superAdmin=localStorage.getItem('rol')
@@ -42,15 +42,12 @@ function captureRfc(){
 }
 
 console.log(expedicionValue);
-function captureVigencia(){
-const fechaSeleccionada = inputVigencia.current.value; 
-const partesFecha = fechaSeleccionada.split('-');
-const dia = partesFecha[2];
-const mes = partesFecha[1];
-const año = partesFecha[0];
-const fechaISO8601 = `${año}-${mes}-${dia}`;  
-setVigenciaValue(fechaISO8601)
-}
+function captureVigencia() {
+    const fechaSeleccionada = inputVigencia.current.value;
+    const fechaTransformada = fechaSeleccionada.replace(/\//g, '-');
+    setVigenciaValue(fechaTransformada);
+  }
+console.log(vigeniaValue);
 function captureEstado(){
     setEstadoValue(inputEstado.current.value)
 }
