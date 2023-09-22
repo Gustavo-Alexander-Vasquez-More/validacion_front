@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link as Anchor, useNavigate } from 'react-router-dom';
 import adminActions from '../redux/actions/admins';
-
 import Swal from 'sweetalert2';
 
 
@@ -66,7 +65,7 @@ function handleKeyPress(event) {
 }
 
   return (
-    <div className=' w-full h-screen flex flex-col justify-center items-center bg-[white]'>
+    <div className=' w-full h-screen flex flex-col justify-center items-center bg-[white] bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/pngtree-abstract-white-and-light-gray-wave-modern-soft-luxury-texture-with-image_1379862.jpg?alt=media&token=083e0548-05a8-404f-8bb9-6ac6703d270c")] bg-no-repeat bg-cover'>
       <div className='w-full sm:w-[70%] lg:w-[50%] md:h-auto flex flex-col items-center justify-around gap-[2rem] py-[1.5rem] '>
       <img className='animate-jump-in w-[7rem] hover:animate-bounce' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/MERCURIO%20LOGO.png?alt=media&token=326bbed2-17d6-49b4-ba0b-ee3eb524963a" alt="" />
         <p className='animate-fade text-[2rem] font-bold text-[black]'>Inicio de Sesión</p>

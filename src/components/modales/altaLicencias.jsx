@@ -54,9 +54,25 @@ function captureEstado(){
 useEffect(() => {
     dispatch(estadosActions.read_estados())
 }, []);
+useEffect(() => {
+    dispatch(licenciaActions.read_licencia())
+}, [dispatch]);
+const licencia=useSelector((store)=>store.licencias.licencias)
 const datos=useSelector((store)=>store.estados.estados)
+const user=localStorage.getItem('usuario')
 async function subirLicencia() {
 try {
+    const folioExiste = licencia.some(item => item.folio === folio_tipoValue);
+      
+    if (folioExiste) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'El folio ya existe. Intenta con otro folio.',
+      });
+      return; // Detener la ejecución
+    }
+
     if (nombreValue && folio_tipoValue && rfcValue && expedicionValue && vigeniaValue && estadoValue && file) {
     const formData = new FormData();
     const data={
@@ -67,6 +83,7 @@ try {
         expedicion:expedicionValue,
         vigencia:vigeniaValue,
         estado_id:estadoValue,
+        author_id:user,
         foto:file
 }
 const rolUsuario = parseInt(localStorage.getItem('rol'));
@@ -91,8 +108,10 @@ window.location.reload();
         usuario: nombre,
         folios: nuevaCantidadDeFolio,
 };
+
 await dispatch(adminActions.update_admins(payload));
 }
+
 } else {
 Swal.fire({
     position: 'center',
@@ -124,7 +143,8 @@ setFile(downloadURL);
     console.error('Error al cargar el archivo:', error);
 }};
   return (
-    <div className='w-[80%] bg-[white] h-auto rounded-[10px] border-solid border-[1px] border-[gray] flex flex-col justify-around items-center py-[1rem] gap-4'>
+    <div className='w-full h-screen bg-[white] flex justify-center py-[1rem] bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/pngtree-abstract-white-and-light-gray-wave-modern-soft-luxury-texture-with-image_1379862.jpg?alt=media&token=083e0548-05a8-404f-8bb9-6ac6703d270c")] bg-no-repeat bg-cover'>
+<div className='lg:w-[40%] w-[80%] bg-[white] h-auto rounded-[10px] border-solid border-[1px] border-[gray] flex flex-col justify-around items-center py-[1rem] gap-3'>
             <p className='sm:text-[1.5rem] font-semibold lg:text-[2rem]'>Alta de licencias </p>
             {superAdmin !=='1' && (
             <p>Cantidad de folios disponibles: {cantidadDeFOlio}</p>
@@ -162,7 +182,7 @@ setFile(downloadURL);
             </div>
             <div className='flex flex-col px-[1rem] sm:w-[80%] lg:w-[60%]'>
             <p className='sm:text-[0.9rem]'>VIGENCIA</p>
-            <input onChange={captureVigencia} ref={inputVigencia} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:text-[black] h-[2rem]' type="text" placeholder='dd/mm/aaaa | permanente | no permanente' />
+            <input onChange={captureVigencia} ref={inputVigencia} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:text-[black] h-[2rem]' type="text"/>
             </div>
             
             <div  className='flex flex-col px-[1rem] sm:w-[80%] lg:w-[60%]'>
@@ -177,5 +197,7 @@ setFile(downloadURL);
             <button onClick={subirLicencia} className='bg-[green] w-[45%] h-[2.5rem] text-[white] rounded-[10px] hover:bg-[#53a05d]'>Subir licencia</button>
             
             </div>
+    </div>
+    
   );
 }

@@ -25,5 +25,19 @@ const read_licencia = createAsyncThunk(
     }
     } 
     )
-  const licenciaActions ={create_licencia, read_licencia}
+    const delete_licencia = createAsyncThunk(
+        'delete_licencia', 
+        async(dato)=>{
+        try {
+        const {data}=await axios.delete('https://validacionback-production.up.railway.app/api/clientes/delete', {
+            data:dato
+        })
+        console.log(data.response);
+        return data.response
+        } catch (error) {
+            console.log(error);
+        }
+        } 
+        )
+  const licenciaActions ={create_licencia, read_licencia, delete_licencia}
 export default licenciaActions

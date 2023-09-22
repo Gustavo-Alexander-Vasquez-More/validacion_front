@@ -68,7 +68,8 @@ async function CrearUsuario() {
 
    
   return (
-    <div className='lg:w-[60%] sm:w-[70%] w-[95%] h-[100vh] bg-[white] sm:h-auto rounded-[10px] border-solid border-[1px] border-[gray] flex flex-col justify-around items-center lg:py-[2rem] sm:py-[0.6rem] sm:gap-4 lg:gap-5'>
+    <div className='w-full h-screen bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/pngtree-abstract-white-and-light-gray-wave-modern-soft-luxury-texture-with-image_1379862.jpg?alt=media&token=083e0548-05a8-404f-8bb9-6ac6703d270c")] bg-no-repeat bg-cover flex justify-center items-center py-[2rem]'>
+    <div className='lg:w-[40%] sm:w-[60%] w-[90%] h-[80vh] bg-[white] sm:h-auto rounded-[10px] border-solid border-[1px] border-[gray] flex flex-col justify-around items-center lg:py-[2rem] sm:py-[0.6rem] sm:gap-4 lg:gap-5'>
     <p className='text-[2rem]'>Crea un usuario</p>
     <div className='flex flex-col lg:px-[1rem] sm:w-[85%] lg:w-[73%] w-[73%]'>
     <p>Usuario:</p>
@@ -89,6 +90,7 @@ async function CrearUsuario() {
     <input onChange={captureFolio} ref={inputFolio} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[0.1rem] h-[2rem]' type="number" placeholder='¿Con cuantos folios empieza?' />
     </div>
     <button onClick={CrearUsuario} className='bg-[#333333] w-[45%] h-[2.5rem] text-[white] rounded-[10px] hover:bg-[#5353a0]'>Crear usuario</button>
+    </div>
     </div>
   );
 }

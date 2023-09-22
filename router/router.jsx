@@ -33,6 +33,7 @@ import Veracruz from "../src/pages/Estados/Veracruz";
 import Yucatan from "../src/pages/Estados/Yucatan";
 import Zacatecas from "../src/pages/Estados/Zacatecas";
 import PanelAdmin from "../src/pages/panelAdmin";
+
 /*ESTO ES PARA LAS PAGINAS DE VALIDACIONES*/
 import AguasCalientesValidacion from "../src/pages/validacionLicencias/aguasCalientes";
 import CampecheVal from "../src/pages/validacionLicencias/campecheVal";
@@ -333,5 +334,5 @@ const router = createBrowserRouter([
         path:"/validacion/cdmx/:folio",
         element:<CdmxVal/>,
     },
-])
+    ])
 export default router

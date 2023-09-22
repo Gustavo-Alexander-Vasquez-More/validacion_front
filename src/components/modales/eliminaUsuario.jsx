@@ -41,7 +41,8 @@ Swal.fire({
 }
 }
   return (
-    <div className='lg:w-[80%] sm:w-[90%] w-[95%] bg-[white] h-auto rounded-[10px] border-solid border-[1px] border-[gray] flex flex-col justify-around items-center py-[2rem] gap-5'>
+    <div className='bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/pngtree-abstract-white-and-light-gray-wave-modern-soft-luxury-texture-with-image_1379862.jpg?alt=media&token=083e0548-05a8-404f-8bb9-6ac6703d270c")] bg-no-repeat bg-cover w-full h-screen flex justify-center py-[5rem]'>
+    <div className='lg:w-[40%] sm:w-[60%] w-[95%] bg-[white] h-[30vh] rounded-[10px] border-solid border-[1px] border-[gray] flex flex-col justify-around items-center py-[2rem] gap-5'>
     <p className='text-[2rem]'>Elimina un usuario</p>
     <select onChange={captureSelect} ref={inputSelectUser} className='w-[90%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[0.8rem] h-[2.1rem]' name="" id="">
       <option  value="">Selecciona el usuario</option>
@@ -51,5 +52,6 @@ Swal.fire({
     </select>
       <button onClick={deleteUser} className='bg-[red] w-[40%] h-[2.5rem] text-[white] rounded-[10px] hover:bg-[#a05353]'>Eliminar</button>
     </div>
+  </div>
   );
 }
