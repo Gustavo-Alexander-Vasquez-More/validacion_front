@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 const create_licencia = createAsyncThunk(
 'create_licencia', 
 async(datos)=>{
@@ -39,5 +40,18 @@ const read_licencia = createAsyncThunk(
         }
         } 
         )
-  const licenciaActions ={create_licencia, read_licencia, delete_licencia}
+        const update_licencias = createAsyncThunk(
+            'update_licencias', 
+            async (payload) => {
+              const { parametro, datos } = payload;
+              console.log(parametro);
+              console.log(datos);
+                try {
+                const {data}=await axios.put(`https://validacionback-production.up.railway.app/api/clientes/update/${parametro}`, datos)
+                return data.response
+                } catch (error) {
+                }
+            } 
+          )
+  const licenciaActions ={create_licencia, read_licencia, delete_licencia, update_licencias}
 export default licenciaActions

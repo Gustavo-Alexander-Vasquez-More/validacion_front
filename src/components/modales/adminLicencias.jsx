@@ -2,11 +2,18 @@ import React, { useEffect, useState } from 'react';
 import licenciaActions from '../../redux/actions/licenciaAction.js';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import EditarLicencia from './editarLicencia.jsx';
 export default function AdminLicencias() {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState('');
   const [folioValue, setFolioValue]=useState('')
+  const [mostrarModal, setMostrarModal]=useState(false)
+  const [opcionSelect, setOpcionSelect]=useState(null)
   const user = localStorage.getItem('usuario');
+  function openModal(opcion){
+    setOpcionSelect(opcion)
+    setMostrarModal(true)
+    }
   const licencias = useSelector((store) => store.licencias.licencias);
   async function deleteCliente(folio) {
     try {
@@ -36,14 +43,17 @@ export default function AdminLicencias() {
 
   const handleFolioClick = async (folio) => {
     try {
+      
       await deleteCliente(folio);
     } catch (error) {
       console.error('Error al manejar el clic del folio:', error);
     }
   };
 
-console.log(folioValue);
-  useEffect(() => {
+  function handleFolioLocal(folio){
+  localStorage.setItem('folioEdit', folio);
+  }
+useEffect(() => {
     dispatch(licenciaActions.read_licencia());
   }, [dispatch]);
 
@@ -69,9 +79,9 @@ console.log(folioValue);
       <div className='w-full h-auto'>
         <div className='h-20 w-full flex justify-center items-center gap-4'>
           <input
-            className='px-2 py-1 w-1/3 border border-[black] rounded-[5px]'
+            className='px-2 py-1 lg:w-1/3 w-[70%] border border-[black] rounded-[5px]'
             type='text'
-            placeholder='Busca por nombre o número de folio'
+            placeholder='Busca por nombre o folio'
             value={searchTerm}
             onChange={handleSearchChange}
           />
@@ -80,14 +90,14 @@ console.log(folioValue);
   </svg>
         </div>
         <div className='w-full h-auto'>
-          <table className='w-full'>
-            <thead>
-              <tr>
-                <th className='py-2 bg-gray-200'>NOMBRE</th>
-                <th className='py-2 bg-gray-200'>FOLIO</th>
-                <th className='py-2 bg-gray-200'>TIPO</th>
-                <th className='py-2 bg-gray-200'>ESTADO</th>
-                <th className='py-2 bg-gray-200'>EDITAR/ELIMINAR</th>
+          <table className='lg:w-full w-full '>
+            <thead className='w-full'>
+              <tr className='w-full'>
+                <th className='py-2 bg-gray-200 text-[0.7rem] lg:text-[1rem]'>NOMBRE</th>
+                <th className='py-2 bg-gray-200 text-[0.7rem] lg:text-[1rem]'>FOLIO</th>
+                <th className='py-2 bg-gray-200 text-[0.7rem] lg:text-[1rem]'>TIPO</th>
+                <th className='py-2 bg-gray-200 text-[0.7rem] lg:text-[1rem]'>ESTADO</th>
+                <th className='py-2 bg-gray-200 text-[0.7rem] lg:text-[1rem]'>EDITAR/ELIMINAR</th>
                 
               </tr>
             </thead>
@@ -95,24 +105,28 @@ console.log(folioValue);
               {filteredLicencias.length === 0 ? (
                 <tr>
                   <td colSpan={4} className='text-center py-4 bg-gray-100'>
-                    No se han encontrado licencias asociadas a este usuario.
+                    <p className='lg:text-[1rem] text-[0.8rem]'>No se han encontrado licencias asociadas a este usuario.</p>
                   </td>
                 </tr>
               ) : (
                 filteredLicencias.map((licencia) => (
                   <tr key={licencia._id}>
-                    <td className='py-2 text-center bg-gray-100'>{licencia.nombre}</td>
-                    <td className='py-2 text-center bg-gray-100'>{licencia.folio}</td>
-                    <td className='py-2 text-center bg-gray-100'>{licencia.tipo}</td>
-                    <td className='py-2 text-center bg-gray-100'>{licencia.estado_id.nombre}</td>
+                    <td className='py-2 text-center bg-gray-100 text-[0.7rem] lg:text-[1rem]'>{licencia.nombre}</td>
+                    <td className='py-2 text-center bg-gray-100 text-[0.7rem] lg:text-[1rem]'>{licencia.folio}</td>
+                    <td className='py-2 text-center bg-gray-100 text-[0.7rem] lg:text-[1rem]'>{licencia.tipo}</td>
+                    <td className='py-2 text-center bg-gray-100 text-[0.7rem] lg:text-[1rem]'>{licencia.estado_id.nombre}</td>
                     <td className='py-2 flex justify-center gap-10 bg-gray-100 '>
-                    <button className='hover:bg-[#32b632] p-[0.3rem] rounded-[5px]'>
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white hover:text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
+                    <button  onClick={() => {
+    openModal('opcion1');
+    handleFolioLocal(licencia.folio);
+  }} className='hover:bg-[#32b632] p-[0.3rem] rounded-[5px] ' >
+                    
+                    <svg class="lg:w-6 h-6 w-[1rem] text-gray-800 dark:text-white hover:text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279"/>
                     </svg>
                     </button>
                      <button className='hover:bg-[#b63232] p-[0.3rem] rounded-[5px] '  onClick={() => handleFolioClick(licencia.folio)} >
-                    <svg  class="w-6 h-6 text-gray-800 dark:text-white hover:text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                    <svg  class="lg:w-6 h-6 w-[1rem] text-gray-800 dark:text-white hover:text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                     </svg>
                     </button>
@@ -123,6 +137,11 @@ console.log(folioValue);
             </tbody>
           </table>
         </div>
+        {mostrarModal && (
+                      <>
+                      <EditarLicencia/>
+                      </>
+                    )}
       </div>
     </div>
   );

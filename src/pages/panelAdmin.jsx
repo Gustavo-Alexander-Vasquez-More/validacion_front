@@ -75,13 +75,13 @@ return (
         </Anchor>
         {superAdmin === '1' ? (
           <>
-          <button onClick={()=>openModal('opcion1')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] sm:py-[0.5rem]  lg:w-[80%] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Crear usuarios</button>
-          <button onClick={()=>openModal('opcion2')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Asignacion folios</button>
-          <button onClick={()=>openModal('opcion3')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Eliminar usuario</button>
-          <button onClick={()=>openModal('opcion4')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Subir licencias</button>
-          <button onClick={()=>openModal('opcion5')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Administrar licencias</button>
-          <Anchor className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]' to='https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/QRS-Mercurio.zip?alt=media&token=8cfb8e08-b030-45cf-900d-eabd19bf740f'><p className='text-center'>Descarga los QR</p></Anchor>
-          <button onClick={LogOut} className='text-[0.8rem] sm:text-[0.8rem]  sm:w-[90%] lg:w-[80%] py-[0.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
+          <button onClick={()=>openModal('opcion1')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] sm:py-[0.5rem]  lg:w-[80%] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0] w-full'>Crear usuarios</button>
+          <button onClick={()=>openModal('opcion2')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full'>Asignacion folios</button>
+          <button onClick={()=>openModal('opcion3')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full'>Eliminar usuario</button>
+          <button onClick={()=>openModal('opcion4')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full'>Subir licencias</button>
+          <button onClick={()=>openModal('opcion5')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full'>Administrar licencias</button>
+          <Anchor className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full' to='https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/QRS-Mercurio.zip?alt=media&token=8cfb8e08-b030-45cf-900d-eabd19bf740f'><p className='text-center  '>Descarga los QR</p></Anchor>
+          <button onClick={LogOut} className='text-[0.8rem] sm:text-[0.8rem]  sm:w-[90%] lg:w-[80%] py-[0.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full'>Cerrar sesión</button>
           </>
         ):
         <>
