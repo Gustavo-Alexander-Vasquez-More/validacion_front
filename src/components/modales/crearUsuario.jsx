@@ -42,7 +42,7 @@ async function CrearUsuario() {
 
     // Dispatch para crear un usuario
     await dispatch(adminActions.create_admins(datos));
-
+    await dispatch(adminActions.read_admins())
     // Mostrar mensaje de éxito
     Swal.fire({
       position: 'center',
@@ -51,7 +51,7 @@ async function CrearUsuario() {
       showConfirmButton: false,
       timer: 1500
     });
-    window.location.reload();
+    
     setUsuarioValue('');
     setPasswordValue('');
     setFolioValue('');

@@ -14,7 +14,7 @@ export default function EdoDeMexico() {
   }, []);
 
   const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaEdomex=licencia.filter(licencia=>licencia.estado_id.nombre === 'Estado De México')
+  const licenciaEdomex=licencia.filter(licencia=>licencia.estado_id.nombre === 'Edomex')
 
   console.log(licencia);
   console.log(licenciaEdomex);

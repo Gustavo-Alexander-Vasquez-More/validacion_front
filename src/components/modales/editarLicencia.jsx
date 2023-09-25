@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import es from 'date-fns/locale/es';
-import licenciaActions from '../../redux/actions/licenciaAction';
+import licenciaActions from '../../redux/actions/licenciaAction.js';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import estados from '../../redux/actions/estados.js'
@@ -35,7 +35,7 @@ async function editarLicencia(){
     try {
         if(payload){
         await dispatch(licenciaActions.update_licencias(payload)) 
-        window.location.reload()
+         
         Swal.fire({
             position: 'center',
             icon: 'success',
@@ -61,7 +61,8 @@ async function editarLicencia(){
 }
 useEffect(() => {
   dispatch(estados.read_estados())
-}, []);
+  dispatch(licenciaActions.read_licencia())
+}, [dispatch]);
 
 const estado=useSelector((store)=>store.estados.estados)
 console.log(estado);

@@ -14,7 +14,7 @@ export default function CMDX() {
   }, []);
 
   const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaCdmx=licencia.filter(licencia=>licencia.estado_id.nombre === 'Ciudad de México (Distrito Federal)')
+  const licenciaCdmx=licencia.filter(licencia=>licencia.estado_id.nombre === 'Cdmx')
 
   console.log(licencia);
   console.log(licenciaCdmx);

@@ -20,6 +20,7 @@ const read_licencia = createAsyncThunk(
     try {
     const {data}=await axios.get('https://validacionback-production.up.railway.app/api/clientes')
     console.log(data.response);
+    
     return data.response
     } catch (error) {
         console.log(error);
@@ -34,6 +35,7 @@ const read_licencia = createAsyncThunk(
             data:dato
         })
         console.log(data.response);
+        thunkAPI.dispatch(read_licencia());
         return data.response
         } catch (error) {
             console.log(error);
@@ -48,7 +50,9 @@ const read_licencia = createAsyncThunk(
               console.log(datos);
                 try {
                 const {data}=await axios.put(`https://validacionback-production.up.railway.app/api/clientes/update/${parametro}`, datos)
+                thunkAPI.dispatch(read_licencia());
                 return data.response
+
                 } catch (error) {
                 }
             } 

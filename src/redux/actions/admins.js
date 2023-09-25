@@ -51,6 +51,7 @@ const delete_admins = createAsyncThunk(
       const { data } = await axios.delete('https://validacionback-production.up.railway.app/api/admins/delete', {
         data: datitos, 
       });
+      thunkAPI.dispatch(read_admins());
     return data.response;
     } catch (error) {
       return null;

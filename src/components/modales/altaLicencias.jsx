@@ -93,6 +93,7 @@ const rolUsuario = parseInt(localStorage.getItem('rol'));
     localStorage.setItem('folios', nuevaCantidadDeFolio.toString());
 }
 await dispatch(licenciaActions.create_licencia(data));
+await dispatch(licenciaActions.read_licencia())
 Swal.fire({
     position: 'center',
     icon: 'success',
@@ -100,7 +101,7 @@ Swal.fire({
     showConfirmButton: false,
     timer: 1500,
 });
-window.location.reload();
+
     if (rolUsuario !== 1) {
     const nuevaCantidadDeFolio = cantidadDeFOlio - 1;
     const nombre = localStorage.getItem('usuario');
@@ -110,6 +111,7 @@ window.location.reload();
 };
 
 await dispatch(adminActions.update_admins(payload));
+
 }
 
 } else {

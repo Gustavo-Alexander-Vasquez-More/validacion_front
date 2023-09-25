@@ -27,7 +27,7 @@ export default function edomexVal() {
         alert('Prohibido realizar clic derecho')
       }
       const licencia=useSelector((store)=>store.licencias.licencias)
-      const licenciaEdomex=licencia.filter(licencia=>licencia.estado_id.nombre === 'Estado De México')
+      const licenciaEdomex=licencia.filter(licencia=>licencia.estado_id.nombre === 'Edomex')
       console.log(licencia);
     
       const licenciaEncontrada = licenciaEdomex.find((item) => item.folio === folio.folio);

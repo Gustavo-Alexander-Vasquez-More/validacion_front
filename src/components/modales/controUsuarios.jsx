@@ -21,6 +21,7 @@ usuario: userValue,
 folios: addFolioValue,
 }
 await dispatch(adminActions.update_admins(payload))
+await dispatch(adminActions.read_admins())
 Swal.fire({
     position: 'center',
     icon: 'success',
@@ -28,7 +29,7 @@ Swal.fire({
     showConfirmButton: false,
     timer: 1500,
 });
-window.location.reload();
+
 setUserValue('')
 setAddFolioValue('')  
 } catch (error) {

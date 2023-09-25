@@ -18,6 +18,7 @@ export default function panelAdmin() {
   const superAdmin=localStorage.getItem('rol')
   useEffect(() => {
   const userToken = localStorage.getItem('token');
+  
   if (!userToken) {
   navigate('/');
   }
@@ -65,14 +66,18 @@ function openModal(opcion){
   function closeMenu() {
     setMenu(false);
   }
+  const usuario=localStorage.getItem('usuario')
 return (
   <div className='w-full h-auto bg-[#e4e4e4] '>
     <div className={`absolute bg-[#e4e4e4] w-[60%] sm:w-[40%] lg:w-[30%] h-full py-[2rem] px-[2rem] flex flex-col gap-10 z-30 items-start transition-transform ${menu ? 'translate-x-0' : '-translate-x-full'}`}>
         <Anchor onClick={closeMenu}>
         <svg className="w-6 h-6 text-[black] hover:animate-spin" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-        </svg> 
+        </svg>
         </Anchor>
+        <div  className='w-full h-[5vh] bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/fondito.jpg?alt=media&token=f5e3b3b3-fbfb-4b19-9f90-a0eab1ab5504")]'>
+        <p className='sm:text-[1.5rem] text-center font-bold text-[1rem]'>Bienvenido {usuario}</p>
+        </div>
         {superAdmin === '1' ? (
           <>
           <button onClick={()=>openModal('opcion1')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] sm:py-[0.5rem]  lg:w-[80%] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0] w-full'>Crear usuarios</button>
@@ -85,10 +90,10 @@ return (
           </>
         ):
         <>
-        <button onClick={()=>openModal('opcion4')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Subir licencias</button>
-        <button onClick={()=>openModal('opcion5')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Administrar licencias</button>
-        <Anchor className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]' to='https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/QRS-Mercurio.zip?alt=media&token=8cfb8e08-b030-45cf-900d-eabd19bf740f'><p className='text-center'>Descarga los QR</p></Anchor>
-        <button onClick={LogOut} className='py-[0.5rem] text-[0.8rem] sm:text-[0.8rem] sm:w-[90%] lg:w-[80%]  bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]'>Cerrar sesión</button>
+        <button onClick={()=>openModal('opcion4')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0] w-full'>Subir licencias</button>
+        <button onClick={()=>openModal('opcion5')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0] w-full'>Administrar licencias</button>
+        <Anchor className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0] w-full' to='https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/QRS-Mercurio.zip?alt=media&token=8cfb8e08-b030-45cf-900d-eabd19bf740f'><p className='text-center'>Descarga los QR</p></Anchor>
+        <button onClick={LogOut} className='py-[0.5rem] text-[0.8rem] sm:text-[0.8rem] sm:w-[90%] lg:w-[80%]  bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0] w-full'>Cerrar sesión</button>
         </>
         }
         </div>
