@@ -75,7 +75,7 @@ return (
         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
         </svg>
         </Anchor>
-        <div  className='w-full h-[5vh] bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/fondito.jpg?alt=media&token=f5e3b3b3-fbfb-4b19-9f90-a0eab1ab5504")]'>
+        <div  className='w-full h-auto bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/fondito.jpg?alt=media&token=f5e3b3b3-fbfb-4b19-9f90-a0eab1ab5504")]'>
         <p className='sm:text-[1.5rem] text-center font-bold text-[1rem]'>Bienvenido {usuario}</p>
         </div>
         {superAdmin === '1' ? (

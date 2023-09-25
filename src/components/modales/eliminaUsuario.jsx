@@ -21,19 +21,26 @@ export default function eliminaUsuario() {
       };
 
       if (datitos.usuario) {
-        await dispatch(adminActions.delete_admins(datitos));
-        
-        // Actualizar la lista de administradores después de eliminar
-        dispatch(adminActions.read_admins());
-
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Usuario eliminado',
-          showConfirmButton: false,
-          timer: 1500,
+        const confirmation = await Swal.fire({
+          title: `¿Estás seguro de que deseas eliminar el usuario ${selectUser} ?`,
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Sí',
+          denyButtonText: 'No',
         });
-      } else {
+  
+        if (confirmation.isConfirmed) {
+          await dispatch(adminActions.delete_admins(datitos));
+          dispatch(adminActions.read_admins());
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Usuario eliminado',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+      
+      } }else {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -57,14 +64,12 @@ export default function eliminaUsuario() {
         <select
           onChange={captureSelect}
           ref={inputSelectUser}
+          value={selectUser}
           className='w-[90%] border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[0.8rem] h-[2.1rem]'
-          name=''
-          id=''
+          
         >
           <option value=''>Selecciona el usuario</option>
-          {admins
-            ?.filter(admin => admin.usuario !== selectUser) // Excluir usuario eliminado
-            .map((admin) => (
+          {admins?.map((admin) => (
               <option key={admin._id} value={admin.usuario}>
                 {admin.usuario}
               </option>

@@ -40,7 +40,7 @@ function formatearFecha(fechaISO8601) {
   const anio = fecha.getUTCFullYear();
   return `${dia.toString().padStart(2, '0')}-${mes.toString().padStart(2, '0')}-${anio}`;
 }
-
+const token=localStorage.getItem('token')
   return (
     <div className='w-full h-screen  sm:px-[8rem] flex flex-col items-center sm:block'>
     <div className=' w-full h-[15vh] flex justify-center items-end'>
@@ -77,7 +77,10 @@ function formatearFecha(fechaISO8601) {
     <img className='w-[15rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Campeche%2Flogo.png?alt=media&token=c59505cf-cbaa-4f05-9db3-b037e87dcd36" alt="" />
     </div>
     </div>
-      
+    {token && (
+
+<Anchor to={"/panelAdministrador"} className=' flex justify-center items-center absolute lg:left-[70%] sm:left-[55%] lg:bottom-[30%] sm:top-[60%] top-[95%] bg-[#00b7ff] px-[1.5rem] py-[0.8rem] rounded-[10px] hover:bg-[#4662ff] text-white '>Regresar al panel</Anchor>
+)}
     </div>
   );
 }

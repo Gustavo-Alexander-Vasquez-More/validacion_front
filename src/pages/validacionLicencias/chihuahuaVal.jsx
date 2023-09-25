@@ -38,7 +38,7 @@ export default function chihuahuaVal() {
     const anio = fecha.getUTCFullYear();
     return `${dia.toString().padStart(2, '0')}-${mes.toString().padStart(2, '0')}-${anio}`;
   }
-  
+  const token=localStorage.getItem('token')
   return (
     <div className='w-full h-screen  sm:px-[8rem] flex flex-col items-center sm:block'>
     <div className=' w-full h-[18vh] flex justify-center items-end'>
@@ -75,7 +75,10 @@ export default function chihuahuaVal() {
     <img className='w-[12rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Chihuahua%2Flogo.png?alt=media&token=fd2f81ab-2b10-4fca-bd33-f96624c44afd" alt="" />
     </div>
     </div>
-      
+    {token && (
+
+<Anchor to={"/panelAdministrador"} className=' flex justify-center items-center absolute lg:left-[70%] sm:left-[55%] lg:bottom-[30%] sm:top-[60%] top-[95%] bg-[#00b7ff] px-[1.5rem] py-[0.8rem] rounded-[10px] hover:bg-[#4662ff] text-white '>Regresar al panel</Anchor>
+)}
     </div>
   );
 }

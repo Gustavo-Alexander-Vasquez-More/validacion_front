@@ -23,22 +23,31 @@ export default function AdminLicencias() {
 
 
   async function deleteCliente(folio) {
+    const dato = { folio };
+    
     try {
-      const dato = { folio };
       if (dato) {
-        // Elimina la licencia
-        await dispatch(licenciaActions.delete_licencia(dato));
-  
-        // Actualiza la lista de licencias en el estado local
-         dispatch(licenciaActions.read_licencia());  // Esto debería actualizar la lista
-  
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Cliente eliminado',
-          showConfirmButton: false,
-          timer: 1500,
+        const confirmation = await Swal.fire({
+          title: '¿Estás seguro de que deseas eliminar esta licencia?',
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Sí',
+          denyButtonText: 'No',
         });
+  
+        if (confirmation.isConfirmed) {
+          dispatch(licenciaActions.delete_licencia(dato));
+          dispatch(licenciaActions.read_licencia());
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Cliente eliminado',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else if (confirmation.isDenied) {
+          Swal.fire('Eliminación cancelada');
+        }
       } else {
         Swal.fire({
           icon: 'error',
@@ -98,6 +107,11 @@ export default function AdminLicencias() {
  
    displayedLicencias = filteredLicencias;
  }
+ const removeSpacesAndAccents = (str) => {
+  // Elimina espacios y tildes
+  return str.toLowerCase().replace(/ /g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+};
+
   return (
     <div className='w-full h-screen bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/pngtree-abstract-white-and-light-gray-wave-modern-soft-luxury-texture-with-image_1379862.jpg?alt=media&token=083e0548-05a8-404f-8bb9-6ac6703d270c")] bg-no-repeat bg-cover'>
       <div className='w-full lg:h-20 h-[5vh] flex justify-center items-center'>
@@ -137,12 +151,12 @@ export default function AdminLicencias() {
                 </tr>
               ) : (
                 displayedLicencias?.map((licencia) => (
-                  <tr key={licencia._id}>
+                  <tr  key={licencia._id}>
                     <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.nombre}</td>
                     <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.folio}</td>
                     <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.estado_id.nombre}</td>
                     <td className='justify-center px-[1rem] flex lg:gap-5 gap-1 bg-gray-100 '>
-                    <Anchor to={`/validacion/${licencia.estado_id.nombre}/${licencia.folio}`}>
+                    <Anchor className='flex ' to={`/validacion/${removeSpacesAndAccents(licencia.estado_id.nombre)}/${licencia.folio}`}>
                     <button className=''>
                     <svg class="lg:w-6 h-6 w-[0.8rem] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                     <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">

@@ -39,7 +39,7 @@ export default function queretaroVal() {
       const mes = fecha.getUTCMonth() + 1; // Sumar 1 al mes porque enero es 0
       const anio = fecha.getUTCFullYear();
       return `${dia.toString().padStart(2, '0')}-${mes.toString().padStart(2, '0')}-${anio}`;
-    }
+    }const token=localStorage.getItem('token')
   return (
     <div className='w-full h-screen  sm:px-[8rem] flex flex-col items-center sm:block'>
     <div className=' w-full h-[15vh] flex justify-center items-end'>
@@ -76,7 +76,10 @@ export default function queretaroVal() {
     <img className='w-[25rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Queretaro%2Flogo.png?alt=media&token=0f8c7bb2-2cc3-4950-a426-7bbe1eb3e719" alt="" />
     </div>
     </div>
-      
+    {token && (
+
+<Anchor to={"/panelAdministrador"} className=' flex justify-center items-center absolute lg:left-[70%] sm:left-[55%] lg:bottom-[30%] sm:top-[60%] top-[95%] bg-[#00b7ff] px-[1.5rem] py-[0.8rem] rounded-[10px] hover:bg-[#4662ff] text-white '>Regresar al panel</Anchor>
+)}
     </div>
   );
 }
