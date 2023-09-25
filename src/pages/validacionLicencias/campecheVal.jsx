@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import licenciaActions from '../../redux/actions/licenciaAction.js';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link as Anchor } from 'react-router-dom';
 export default function campecheVal() {
   const dispatch=useDispatch()
 const folio = useParams();

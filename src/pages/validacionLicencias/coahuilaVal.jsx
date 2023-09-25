@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import licenciaActions from '../../redux/actions/licenciaAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { Link as Anchor } from 'react-router-dom';
 export default function coahuilaVal() {
   const dispatch=useDispatch()
   const folio = useParams();
