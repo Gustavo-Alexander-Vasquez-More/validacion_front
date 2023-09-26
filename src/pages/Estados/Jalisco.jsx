@@ -10,11 +10,11 @@ export default function Jalisco() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaJalisco=licencia.filter(licencia=>licencia.estado_id.nombre === 'Jalisco')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaJalisco=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Jalisco') : [];
 
   console.log(licencia);
   console.log(licenciaJalisco);

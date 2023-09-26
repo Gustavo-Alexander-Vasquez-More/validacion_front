@@ -10,11 +10,11 @@ export default function AguasCalientes() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaAguas=licencia.filter(licencia=>licencia.estado_id.nombre === 'Aguascalientes')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaAguas=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre ===   'Aguascalientes') : [];
 
   console.log(licencia);
   console.log(licenciaAguas);

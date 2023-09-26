@@ -10,11 +10,11 @@ export default function EdoDeMexico() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaEdomex=licencia.filter(licencia=>licencia.estado_id.nombre === 'Edomex')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaEdomex=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Edomex') : [];
 
   console.log(licencia);
   console.log(licenciaEdomex);

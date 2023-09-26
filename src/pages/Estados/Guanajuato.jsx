@@ -10,11 +10,11 @@ export default function Guanajuato() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaGuanajuato=licencia.filter(licencia=>licencia.estado_id.nombre === 'Guanajuato')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaGuanajuato=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Guanajuato') : [];
 
   console.log(licencia);
   console.log(licenciaGuanajuato);

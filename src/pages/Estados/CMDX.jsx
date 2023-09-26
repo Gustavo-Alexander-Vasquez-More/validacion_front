@@ -10,11 +10,11 @@ export default function CMDX() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaCdmx=licencia.filter(licencia=>licencia.estado_id.nombre === 'Cdmx')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaCdmx=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Cdmx') : [];
 
   console.log(licencia);
   console.log(licenciaCdmx);

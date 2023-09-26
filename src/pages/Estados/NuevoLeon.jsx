@@ -10,11 +10,11 @@ export default function NuevoLeon() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaNuevoLeon=licencia.filter(licencia=>licencia.estado_id.nombre === 'Nuevo León')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaNuevoLeon=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Nuevo León') : [];
 
   console.log(licencia);
   console.log(licenciaNuevoLeon);

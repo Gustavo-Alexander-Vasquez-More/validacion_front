@@ -9,11 +9,11 @@ export default function Chiapas() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaChiapas=licencia.filter(licencia=>licencia.estado_id.nombre === 'Chiapas')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaChiapas=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Chiapas') : [];
 
   console.log(licencia);
   console.log(licenciaChiapas);

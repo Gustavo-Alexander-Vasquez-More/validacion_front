@@ -8,13 +8,14 @@ export default function Tabasco() {
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState('');
   const inputSearch = useRef();
-
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaTabasco=licencia.filter(licencia=>licencia.estado_id.nombre === 'Tabasco')
+
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+
+  const licenciaTabasco=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Tabasco') : [];
 
   console.log(licencia);
   console.log(licenciaTabasco);

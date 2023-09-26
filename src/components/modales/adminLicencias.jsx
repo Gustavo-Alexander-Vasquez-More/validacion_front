@@ -5,26 +5,37 @@ import Swal from 'sweetalert2';
 import EditarLicencia from './editarLicencia.jsx';
 import { Link as Anchor } from 'react-router-dom';
 export default function AdminLicencias() {
-  const MAX_DISPLAYED_LICENCES = 5;
-  const dispatch = useDispatch();
-  const [searchTerm, setSearchTerm] = useState('');
-  const [folioValue, setFolioValue]=useState('')
-  const [mostrarModal, setMostrarModal]=useState(false)
-  const [opcionSelect, setOpcionSelect]=useState(null)
-  const user = localStorage.getItem('usuario');
-  function openModal(opcion){
-    setOpcionSelect(opcion)
-    setMostrarModal(true)
-    }
-  const licencias = useSelector((store) => store.licencias.licencias);
-  useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, [dispatch, licencias]);
+const dispatch = useDispatch();
+const [searchTerm, setSearchTerm] = useState('');
+const [mostrarModal, setMostrarModal]=useState(false)
+const [opcionSelect, setOpcionSelect]=useState(null)
+const [currentPage, setCurrentPage] = useState(
+  parseInt(localStorage.getItem('pagina')) || 1 //le digo que mi estado inicial sea 1 o que sea el numero almacenado en el local storage
+);
 
-
-  async function deleteCliente(folio) {
+const user = localStorage.getItem('usuario');
+function openModal(opcion){
+  setOpcionSelect(opcion)
+  setMostrarModal(true)
+}
+const licencia = useSelector((store) => store.licencias?.licencias);
+const licencias=licencia?.response
+console.log(licencias);
+const page=currentPage
+useEffect(() => {
+  localStorage.setItem('pagina', currentPage);
+  dispatch(licenciaActions.read_licencia(page));
+}, [dispatch]);
+function handleNext(){
+  setCurrentPage(currentPage + 1)
+  dispatch(licenciaActions.read_licencia(currentPage + 1));
+ }
+function handlePrev(){
+setCurrentPage(currentPage - 1)
+dispatch(licenciaActions.read_licencia(currentPage - 1));
+}
+async function deleteCliente(folio) {
     const dato = { folio };
-    
     try {
       if (dato) {
         const confirmation = await Swal.fire({
@@ -34,15 +45,14 @@ export default function AdminLicencias() {
           confirmButtonText: 'Sí',
           denyButtonText: 'No',
         });
-  
-        if (confirmation.isConfirmed) {
+  if (confirmation.isConfirmed) {
           dispatch(licenciaActions.delete_licencia(dato));
-          dispatch(licenciaActions.read_licencia());
+          await dispatch(licenciaActions.read_licencia(currentPage));
           Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'Cliente eliminado',
-            showConfirmButton: false,
+            showConfirmButton: dispatch(licenciaActions.read_licencia(currentPage)) ,
             timer: 1500,
           });
         } else if (confirmation.isDenied) {
@@ -79,38 +89,21 @@ export default function AdminLicencias() {
     setSearchTerm(event.target.value);
   };
  const Superadmin=localStorage.getItem('rol')
- let filteredLicencias = [];
- let displayedLicencias = [];
  
- if (Superadmin === '1') {
-  
-   filteredLicencias = licencias?.filter(
-       (licencia) =>
-         licencia.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-         licencia.folio.toLowerCase().includes(searchTerm.toLowerCase())
-     )
-     .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
-     .slice(0, MAX_DISPLAYED_LICENCES);
- 
-   displayedLicencias = filteredLicencias;
- } else if (parseInt(Superadmin) > 1) {
-   filteredLicencias = licencias
-     .filter(
-       (licencia) =>
-         licencia.author_id &&
-         licencia.author_id.usuario.toLowerCase() === user.toLowerCase() &&
-         (licencia.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-           licencia.folio.toLowerCase().includes(searchTerm.toLowerCase()))
-     )
-     .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
-     .slice(0, MAX_DISPLAYED_LICENCES);
- 
-   displayedLicencias = filteredLicencias;
- }
+ const filteredLicencias = licencias?.filter((licencia) => {
+  const nombre = licencia?.nombre.toLowerCase();
+  const folio = licencia?.folio.toLowerCase();
+  const searchTermLower = searchTerm.toLowerCase();
+
+  return nombre.includes(searchTermLower) || folio.includes(searchTermLower);
+});
+
  const removeSpacesAndAccents = (str) => {
   // Elimina espacios y tildes
   return str.toLowerCase().replace(/ /g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 };
+
+const pagina=localStorage.setItem('pagina', currentPage)
 
   return (
     <div className='w-full h-screen bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/pngtree-abstract-white-and-light-gray-wave-modern-soft-luxury-texture-with-image_1379862.jpg?alt=media&token=083e0548-05a8-404f-8bb9-6ac6703d270c")] bg-no-repeat bg-cover'>
@@ -141,7 +134,7 @@ export default function AdminLicencias() {
                 </tr>
             </thead>
             <tbody>
-            {displayedLicencias?.length === 0 ? (
+            {filteredLicencias?.length === 0 ? (
                 <tr>
                   <td colSpan={4} className='text-center px-[1rem] py-4 bg-gray-100'>
                     <p className='lg:text-[1rem] text-[0.8rem]'>
@@ -150,13 +143,13 @@ export default function AdminLicencias() {
                   </td>
                 </tr>
               ) : (
-                displayedLicencias?.map((licencia) => (
+                filteredLicencias?.map((licencia) => (
                   <tr  key={licencia._id}>
                     <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.nombre}</td>
                     <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.folio}</td>
                     <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.estado_id.nombre}</td>
                     <td className='justify-center px-[1rem] flex lg:gap-5 gap-1 bg-gray-100 '>
-                    <Anchor className='flex ' to={`/validacion/${removeSpacesAndAccents(licencia.estado_id.nombre)}/${licencia.folio}`}>
+                    <Anchor className='flex ' to={`/validacion/${removeSpacesAndAccents(licencia?.estado_id?.nombre)}/${licencia?.folio}`}>
                     <button className=''>
                     <svg class="lg:w-6 h-6 w-[0.8rem] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                     <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -188,9 +181,11 @@ export default function AdminLicencias() {
           </table>
           </div>
         <div className='w-full h-[6vh] flex justify-center gap-5 items-center'>
-        <button className='bg-[#1db9b9] text-white p-1 rounded-[10px]'>Anterior</button>
-        <p>{'1'}</p>
-        <button className='bg-[#1db9b9] text-white p-1 rounded-[10px]'>Siguiente</button>
+        <button  onClick={handlePrev}
+        disabled={licencia?.prevPage === null} className='bg-[#1db9b9] text-white p-1 rounded-[10px] disabled:bg-[gray]'>Anterior</button>
+        <p>Página: {currentPage}</p>
+        <button  onClick={handleNext}
+          disabled={ licencia?.nextPage === null} className='bg-[#1db9b9] text-white p-1 rounded-[10px] disabled:bg-[gray]'>Siguiente</button>
           </div>
         {mostrarModal && (
                       <>

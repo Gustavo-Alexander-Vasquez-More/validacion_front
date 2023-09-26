@@ -9,11 +9,11 @@ export default function Colima() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaColima=licencia.filter(licencia=>licencia.estado_id.nombre === 'Colima')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaColima=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Colima') : [];
 
   console.log(licencia);
   console.log(licenciaColima);

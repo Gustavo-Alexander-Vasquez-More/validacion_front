@@ -9,11 +9,11 @@ export default function Campeche() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaCampeche=licencia.filter(licencia=>licencia.estado_id.nombre === 'Campeche')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaCampeche=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Campeche') : [];
 console.log(licenciaCampeche);
   console.log(licencia);
   

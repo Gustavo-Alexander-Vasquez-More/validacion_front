@@ -10,11 +10,11 @@ export default function Michoacan() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaMichoacan=licencia.filter(licencia=>licencia.estado_id.nombre === 'Michoacán')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaMichoacan=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Michoacán') : [];
 
   console.log(licencia);
   console.log(licenciaMichoacan);

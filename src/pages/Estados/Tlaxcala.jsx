@@ -11,11 +11,12 @@ export default function Tlaxcala() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaTlaxcala=licencia.filter(licencia=>licencia.estado_id.nombre === 'Tlaxcala')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+
+  const licenciaTlaxcala=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Tlaxcala') : [];
 
   console.log(licencia);
   console.log(licenciaTlaxcala);

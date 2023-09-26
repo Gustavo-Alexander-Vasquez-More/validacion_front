@@ -11,11 +11,11 @@ export default function Oaxaca() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaOaxaca=licencia.filter(licencia=>licencia.estado_id.nombre === 'Oaxaca')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaOaxaca=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Oaxaca') : [];
 
   console.log(licencia);
   console.log(licenciaOaxaca);

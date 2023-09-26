@@ -9,11 +9,11 @@ export default function Durango() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaDurango=licencia.filter(licencia=>licencia.estado_id.nombre === 'Durango')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaDurango=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Durango' ) : [];
 
   console.log(licencia);
   console.log(licenciaDurango);

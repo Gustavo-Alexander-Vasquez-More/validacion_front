@@ -11,11 +11,11 @@ export default function SanLuisPotosi() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaSanLuis=licencia.filter(licencia=>licencia.estado_id.nombre === 'San Luis Potosí')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaSanLuis=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'San Luis Potosí') : [];
 
   console.log(licencia);
   console.log(licenciaSanLuis);

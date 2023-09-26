@@ -10,11 +10,11 @@ export default function QuintanaRoo() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaQuintana=licencia.filter(licencia=>licencia.estado_id.nombre === 'Quintana Roo')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaQuintana=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Quintana Roo') : [];
 
   console.log(licencia);
   console.log(licenciaQuintana);

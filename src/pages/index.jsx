@@ -30,8 +30,8 @@ setPasswordValue(inputPassword.current.value)
 
 async function logIn(){
 const datos={
-usuario:userValue,
-contraseña:passwordValue
+usuario:userValue.trim(),
+contraseña:passwordValue.trim()
 }
 try {
   await dispatch(adminActions.login_admins(datos))

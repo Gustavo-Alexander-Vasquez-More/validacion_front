@@ -9,11 +9,11 @@ export default function Puebla() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaPuebla=licencia.filter(licencia=>licencia.estado_id.nombre === 'Puebla')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaPuebla=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Puebla') : [];
 
   console.log(licencia);
   console.log(licenciaPuebla);

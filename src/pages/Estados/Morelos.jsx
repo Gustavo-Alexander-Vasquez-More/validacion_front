@@ -10,11 +10,11 @@ export default function Morelos() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaMorelos=licencia.filter(licencia=>licencia.estado_id.nombre === 'Morelos')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaMorelos=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Morelos') : [];
 
   console.log(licencia);
   console.log(licenciaMorelos);

@@ -10,11 +10,12 @@ export default function BajaCaliforniaSur() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaBajaCalSur=licencia.filter(licencia=>licencia.estado_id.nombre === 'Baja California Sur')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaBajaCalSur=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Baja California Sur') : [];
+  console.log(licenciaCampeche);
 
   console.log(licencia);
   console.log(licenciaBajaCalSur);

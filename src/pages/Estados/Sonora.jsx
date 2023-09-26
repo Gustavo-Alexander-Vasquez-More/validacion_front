@@ -9,11 +9,12 @@ export default function Sonora() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaSonora=licencia.filter(licencia=>licencia.estado_id.nombre === 'Sonora')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+
+  const licenciaSonora=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Sonora') : [];
 
   console.log(licencia);
   console.log(licenciaSonora);

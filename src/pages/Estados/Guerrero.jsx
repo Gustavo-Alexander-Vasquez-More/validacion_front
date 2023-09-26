@@ -10,11 +10,11 @@ export default function Guerrero() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaGuerrero=licencia.filter(licencia=>licencia.estado_id.nombre === 'Guerrero')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaGuerrero=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Guerrero') : [];
 
   console.log(licencia);
   console.log(licenciaGuerrero);

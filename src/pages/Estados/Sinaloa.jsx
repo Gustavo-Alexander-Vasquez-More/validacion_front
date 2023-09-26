@@ -10,11 +10,12 @@ export default function Sinaloa() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaSinaloa=licencia.filter(licencia=>licencia.estado_id.nombre === 'Sinaloa')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+
+  const licenciaSinaloa=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Sinaloa') : [];
 
   console.log(licencia);
   console.log(licenciaSinaloa);

@@ -8,12 +8,14 @@ export default function Veracruz() {
   const [searchValue, setSearchValue] = useState('');
   const inputSearch = useRef();
 
-  useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaVeracruz=licencia.filter(licencia=>licencia.estado_id.nombre === 'Veracruz')
+  useEffect(() => {
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
+
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+
+  const licenciaVeracruz=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Veracruz') : [];
 
   console.log(licencia);
   console.log(licenciaVeracruz);

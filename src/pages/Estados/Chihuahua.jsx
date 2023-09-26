@@ -8,12 +8,13 @@ export default function Chihuahua() {
   const [searchValue, setSearchValue] = useState('');
   const inputSearch = useRef();
 
-  useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaChihuahua=licencia.filter(licencia=>licencia.estado_id.nombre === 'Chihuahua')
+  useEffect(() => {
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
+
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaChihuahua=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Chihuahua') : [];
 
   console.log(licencia);
   console.log(licenciaChihuahua);

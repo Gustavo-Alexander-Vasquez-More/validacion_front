@@ -35,7 +35,7 @@ async function editarLicencia(){
     try {
         if(payload){
         await dispatch(licenciaActions.update_licencias(payload)) 
-         
+         dispatch(licenciaActions.read_licencia(1))
         Swal.fire({
             position: 'center',
             icon: 'success',

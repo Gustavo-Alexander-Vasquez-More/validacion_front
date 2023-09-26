@@ -9,11 +9,12 @@ export default function Yucatan() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaYucatan=licencia.filter(licencia=>licencia.estado_id.nombre === 'Yucatán')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaYucatan = Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Yucatán') : [];
+
 
   console.log(licencia);
   console.log(licenciaYucatan);

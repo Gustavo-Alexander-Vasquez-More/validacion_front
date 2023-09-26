@@ -10,11 +10,10 @@ export default function Zacatecas() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
-
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaZacatecas=licencia.filter(licencia=>licencia.estado_id.nombre === 'Zacatecas')
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaZacatecas = Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Zacatecas') : [];
 
   console.log(licencia);
   console.log(licenciaZacatecas);
@@ -38,6 +37,7 @@ async function navigateValidation() {
 
     if (foundLicencia) {
       navigate(`/validacion/zacatecas/${foundLicencia.folio}`);
+      
     } else {
       alert('No se han encontrado resultados con su búsqueda');
     }

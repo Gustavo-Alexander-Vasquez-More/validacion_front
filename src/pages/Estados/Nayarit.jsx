@@ -10,12 +10,11 @@ export default function Nayarit() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaNayarit=licencia.filter(licencia=>licencia.estado_id.nombre === 'Nayarit')
-
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaNayarit=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Nayarit') : [];
   console.log(licencia);
   console.log(licenciaNayarit);
   ;

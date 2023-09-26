@@ -7,7 +7,7 @@ const create_licencia = createAsyncThunk(
 async(datos)=>{
 try {
 const {data}=await axios.post('https://validacionback-production.up.railway.app/api/clientes/create', datos)
-console.log(data.response);
+
 return data.response
 } catch (error) {
     console.log(error);
@@ -16,12 +16,12 @@ return data.response
 )
 const read_licencia = createAsyncThunk(
     'read_licencia', 
-    async()=>{
+    async(page)=>{
     try {
-    const {data}=await axios.get('https://validacionback-production.up.railway.app/api/clientes')
-    console.log(data.response);
+    const {data}=await axios.get(`https://validacionback-production.up.railway.app/api/clientes?page=${page}`)
+   console.log(data);
     
-    return data.response
+    return data
     } catch (error) {
         console.log(error);
     }
@@ -34,7 +34,7 @@ const read_licencia = createAsyncThunk(
         const {data}=await axios.delete('https://validacionback-production.up.railway.app/api/clientes/delete', {
             data:dato
         })
-        console.log(data.response);
+        
         thunkAPI.dispatch(read_licencia());
         return data.response
         } catch (error) {
@@ -46,8 +46,7 @@ const read_licencia = createAsyncThunk(
             'update_licencias', 
             async (payload) => {
               const { parametro, datos } = payload;
-              console.log(parametro);
-              console.log(datos);
+              
                 try {
                 const {data}=await axios.put(`https://validacionback-production.up.railway.app/api/clientes/update/${parametro}`, datos)
                 thunkAPI.dispatch(read_licencia());
@@ -57,5 +56,34 @@ const read_licencia = createAsyncThunk(
                 }
             } 
           )
-  const licenciaActions ={create_licencia, read_licencia, delete_licencia, update_licencias}
+          const read_licenciaAuth = createAsyncThunk(
+            'read_licenciaAuth', 
+            async(payload)=>{
+                const { author, page } = payload;
+                console.log(author);
+            try {
+            const {data}=await axios.get(`https://validacionback-production.up.railway.app/api/clientes/author?author=${author}&page=${page}`)
+           console.log(data);
+            
+            return data
+            } catch (error) {
+                console.log(error);
+            }
+            } 
+            )
+            const read_Alllicencias = createAsyncThunk(
+                'read_Alllicencias', 
+                async()=>{
+                    
+                try {
+                const {data}=await axios.get(`https://validacionback-production.up.railway.app/api/clientes/todos`)
+               console.log(data.response);
+                
+                return data.response
+                } catch (error) {
+                    console.log(error);
+                }
+                } 
+                )
+  const licenciaActions ={create_licencia, read_licencia, delete_licencia, update_licencias, read_licenciaAuth, read_Alllicencias}
 export default licenciaActions

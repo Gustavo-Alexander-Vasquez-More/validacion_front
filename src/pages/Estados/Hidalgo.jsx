@@ -11,11 +11,11 @@ export default function Hidalgo() {
   const inputSearch = useRef();
 
   useEffect(() => {
-    dispatch(licenciaActions.read_licencia());
-  }, []);
+    dispatch(licenciaActions.read_Alllicencias());
+  }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias.licencias);
-  const licenciaHidalgo=licencia.filter(licencia=>licencia.estado_id.nombre === 'Hidalgo')
+  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licenciaHidalgo=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Hidalgo') : [];
 
   console.log(licencia);
   console.log(licenciaHidalgo);

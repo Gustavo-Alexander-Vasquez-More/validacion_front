@@ -57,12 +57,13 @@ useEffect(() => {
 useEffect(() => {
     dispatch(licenciaActions.read_licencia())
 }, [dispatch]);
-const licencia=useSelector((store)=>store.licencias.licencias)
+const licencias=useSelector((store)=>store.licencias.licencias)
+const licencia=licencias?.response
 const datos=useSelector((store)=>store.estados.estados)
 const user=localStorage.getItem('usuario')
 async function subirLicencia() {
 try {
-    const folioExiste = licencia.some(item => item.folio === folio_tipoValue);
+    const folioExiste = licencia?.some(item => item.folio === folio_tipoValue);
       
     if (folioExiste) {
       Swal.fire({

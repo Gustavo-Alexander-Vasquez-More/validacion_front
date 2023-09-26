@@ -5,12 +5,27 @@ import { useParams } from 'react-router-dom';
 import { Link as Anchor } from 'react-router-dom';
 export default function tlaxcalaVal() {
   const dispatch=useDispatch()
-  const folio = useParams();
-    console.log(folio);
-  
+  const folio = useParams().folio;
+  const pagina=localStorage.getItem('pagina')
+  const page=parseInt(pagina)
+
+  const rol =localStorage.getItem('rol')
+  const usuario=localStorage.getItem('usuario')
+  if(rol === '1' || rol ==='2' ){
     useEffect(() => {
-      dispatch(licenciaActions.read_licencia())
+      dispatch(licenciaActions.read_licencia(page))
     }, []);
+  }
+
+  if(rol === '3'){
+    const payload={
+      page:page,
+      author:usuario
+      }
+    useEffect(() => {
+      dispatch(licenciaActions.read_licenciaAuth(payload))
+    }, []);
+  }
   
     useEffect(() => {
       // Agregar un manejador de eventos al montar el componente
@@ -26,11 +41,12 @@ export default function tlaxcalaVal() {
       event.preventDefault();
       alert('Prohibido realizar clic derecho')
     }
-    const licencia=useSelector((store)=>store.licencias.licencias)
-    const licenciaTlaxcala=licencia.filter(licencia=>licencia.estado_id.nombre === 'Tlaxcala')
+    const licencias=useSelector((store)=>store.licencias?.licencias)
+    const licencia=licencias.response
+    const licenciaTlaxcala=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Tlaxcala')
     console.log(licencia);
   console.log(licenciaTlaxcala);
-    const licenciaEncontrada = licenciaTlaxcala.find((item) => item.folio === folio.folio);
+    const licenciaEncontrada = licenciaTlaxcala?.find((item) => item.folio === folio);
   console.log(licenciaEncontrada);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
@@ -39,6 +55,10 @@ export default function tlaxcalaVal() {
     const anio = fecha.getUTCFullYear();
     return `${dia.toString().padStart(2, '0')}-${mes.toString().padStart(2, '0')}-${anio}`;
   }const token=localStorage.getItem('token')
+
+  function deletePage(){
+  localStorage.removeItem('pagina')
+  }
   return (
     <div className='w-full h-screen  sm:px-[8rem] flex flex-col items-center sm:block'>
     <div className=' w-full h-[15vh] flex justify-center items-end'>
@@ -77,7 +97,7 @@ export default function tlaxcalaVal() {
     </div>
     {token && (
 
-<Anchor to={"/panelAdministrador"} className=' flex justify-center items-center absolute lg:left-[70%] sm:left-[55%] lg:bottom-[30%] sm:top-[60%] top-[95%] bg-[#00b7ff] px-[1.5rem] py-[0.8rem] rounded-[10px] hover:bg-[#4662ff] text-white '>Regresar al panel</Anchor>
+<Anchor to={"/panelAdministrador"} onClick={deletePage} className=' flex justify-center items-center absolute lg:left-[70%] sm:left-[55%] lg:bottom-[30%] sm:top-[60%] top-[95%] bg-[#00b7ff] px-[1.5rem] py-[0.8rem] rounded-[10px] hover:bg-[#4662ff] text-white '>Regresar al panel</Anchor>
 )}
     </div>
   );
