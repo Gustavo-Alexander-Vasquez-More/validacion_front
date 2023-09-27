@@ -51,7 +51,7 @@ export default function chihuahuaVal() {
     const licenciaChihuahua=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Chihuahua')
     const licenciaChihuahua2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Chihuahua')
     const licenciaEncontrada = licenciaChihuahua?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaChihuahua2.find((item) => item.folio === folio); 
+    const licenciaEncontradaAll = licenciaChihuahua2?.find((item) => item.folio === folio); 
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

@@ -52,7 +52,7 @@ export default function quintanaVal() {
     const licenciaQuintana=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Quintana Roo')
     const licenciaQuintana2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Quintana Roo')
     const licenciaEncontrada = licenciaQuintana?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaQuintana2.find((item) => item.folio === folio);
+    const licenciaEncontradaAll = licenciaQuintana2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

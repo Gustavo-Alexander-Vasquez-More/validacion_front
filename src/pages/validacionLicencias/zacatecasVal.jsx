@@ -52,7 +52,7 @@ export default function zacatecasVal() {
     const licenciaZacatecas=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Zacatecas')
     const licenciaZacatecas2=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Zacatecas')
     const licenciaEncontrada = licenciaZacatecas?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaZacatecas2.find((item) => item.folio === folio);
+    const licenciaEncontradaAll = licenciaZacatecas2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

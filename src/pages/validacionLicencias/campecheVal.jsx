@@ -52,7 +52,7 @@ export default function campecheVal() {
   const licenciaCampeche=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Campeche')
   const licenciaCampeche2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Campeche')
   const licenciaEncontrada = licenciaCampeche?.find((item) => item.folio === folio);
-  const licenciaEncontradaAll = licenciaCampeche2.find((item) => item.folio === folio);
+  const licenciaEncontradaAll = licenciaCampeche2?.find((item) => item.folio === folio);
 
 function formatearFecha(fechaISO8601) {
   const fecha = new Date(fechaISO8601);

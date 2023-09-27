@@ -52,7 +52,7 @@ export default function yucatanVal() {
     const licenciaYucatan=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Yucatán')
     const licenciaYucatan2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Yucatán')
     const licenciaEncontrada = licenciaYucatan?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaYucatan2.find((item) => item.folio === folio);
+    const licenciaEncontradaAll = licenciaYucatan2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

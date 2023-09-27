@@ -52,7 +52,7 @@ export default function Sonora() {
     const licenciaSonora=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Sonora')
     const licenciaSonora2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Sonora')
     const licenciaEncontrada = licenciaSonora?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaSonora2.find((item) => item.folio === folio);
+    const licenciaEncontradaAll = licenciaSonora2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

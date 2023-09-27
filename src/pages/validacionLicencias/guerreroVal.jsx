@@ -51,7 +51,7 @@ export default function guerreroVal() {
     const licenciaGuerrero=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Guerrero')
     const licenciaGuerrero2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Guerrero') 
     const licenciaEncontrada = licenciaGuerrero?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaGuerrero2.find((item) => item.folio === folio);
+    const licenciaEncontradaAll = licenciaGuerrero2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

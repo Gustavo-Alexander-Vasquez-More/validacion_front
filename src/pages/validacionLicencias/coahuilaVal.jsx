@@ -51,7 +51,7 @@ export default function coahuilaVal() {
     const licenciaCoahuila=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Coahuila')
     const licenciaCoahuila2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Coahuila')
     const licenciaEncontrada = licenciaCoahuila?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaCoahuila2.find((item) => item.folio === folio);
+    const licenciaEncontradaAll = licenciaCoahuila2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

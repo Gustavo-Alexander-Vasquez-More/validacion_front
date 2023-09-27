@@ -10,19 +10,21 @@ export default function deleteLicencias() {
     const [currentPage, setCurrentPage] = useState(
       parseInt(localStorage.getItem('pagina')) || 1 //le digo que mi estado inicial sea 1 o que sea el numero almacenado en el local storage
     );
+    useEffect(() => {
+      const payload={
+        page:currentPage,
+        author:user
+        }
+      localStorage.setItem('pagina', currentPage);
+      dispatch(licenciaActions.read_licenciaAuth(payload));
+    }, [dispatch]);
+    
     const user = localStorage.getItem('usuario');
-    console.log(user);
     const licencia = useSelector((store) => store.licencias?.licencias);
     const licencias = licencia?.response || [];
    console.log(licencias);
-   const payload={
-    page:currentPage,
-    author:user
-    }
-    useEffect(() => {
-      localStorage.setItem('pagina', currentPage);
-      dispatch(licenciaActions.read_licenciaAuth(payload));
-    }, [dispatch, payload]);
+  
+    
   
     function handleNext(){
       setCurrentPage(currentPage + 1)

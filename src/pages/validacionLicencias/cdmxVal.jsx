@@ -51,7 +51,7 @@ export default function cdmxVal() {
   const licenciaCdmx=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Cdmx')
   const licenciaCdmx2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Cdmx')
   const licenciaEncontrada = licenciaCdmx?.find((item) => item.folio === folio);
-  const licenciaEncontradaAll = licenciaCdmx2.find((item) => item.folio === folio);  
+  const licenciaEncontradaAll = licenciaCdmx2?.find((item) => item.folio === folio);  
     function formatearFecha(fechaISO8601) {
       const fecha = new Date(fechaISO8601);
       const dia = fecha.getUTCDate();

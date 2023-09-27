@@ -52,7 +52,7 @@ export default function tlaxcalaVal() {
     const licenciaTlaxcala=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Tlaxcala')
     const licenciaTlaxcala2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Tlaxcala')
     const licenciaEncontrada = licenciaTlaxcala?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaTlaxcala2.find((item) => item.folio === folio);
+    const licenciaEncontradaAll = licenciaTlaxcala2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

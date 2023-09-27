@@ -53,7 +53,7 @@ export default function veracruzVal() {
     const licenciaVeracruz=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Veracruz')
     const licenciaVeracruz2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Veracruz')
     const licenciaEncontrada = licenciaVeracruz?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaVeracruz2.find((item) => item.folio === folio);
+    const licenciaEncontradaAll = licenciaVeracruz2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

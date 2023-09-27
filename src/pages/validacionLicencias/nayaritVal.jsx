@@ -51,7 +51,7 @@ export default function nayaritVal() {
   const licenciaNayarit=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Nayarit')
   const licenciaNayarit2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Nayarit')
   const licenciaEncontrada = licenciaNayarit?.find((item) => item.folio === folio);
-  const licenciaEncontradaAll = licenciaNayarit2.find((item) => item.folio === folio);
+  const licenciaEncontradaAll = licenciaNayarit2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

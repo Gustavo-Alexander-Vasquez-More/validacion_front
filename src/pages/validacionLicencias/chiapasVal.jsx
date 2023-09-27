@@ -51,7 +51,7 @@ export default function chiapasVal() {
   const licenciaChiapas=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Chiapas')
   const licenciaChiapas2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Chiapas')
   const licenciaEncontrada = licenciaChiapas?.find((item) => item.folio === folio);
-  const licenciaEncontradaAll = licenciaChiapas2.find((item) => item.folio === folio); 
+  const licenciaEncontradaAll = licenciaChiapas2?.find((item) => item.folio === folio); 
 function formatearFecha(fechaISO8601) {
   const fecha = new Date(fechaISO8601);
   const dia = fecha.getUTCDate();

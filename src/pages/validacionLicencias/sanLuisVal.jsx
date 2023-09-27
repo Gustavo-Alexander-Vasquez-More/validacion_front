@@ -52,7 +52,7 @@ export default function sanLuisVal() {
     const licenciaSanLuis=licencia?.filter(licencia=>licencia.estado_id.nombre === 'San Luis Potosí')
     const licenciaSanLuis2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'San Luis Potosí')
     const licenciaEncontrada = licenciaSanLuis?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaSanLuis2.find((item) => item.folio === folio);
+    const licenciaEncontradaAll = licenciaSanLuis2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();

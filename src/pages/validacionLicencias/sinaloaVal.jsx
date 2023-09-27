@@ -52,7 +52,7 @@ export default function sinaloaVal() {
     const licenciaSinaloa=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Sinaloa')
     const licenciaSinaloa2=allLicencia?.filter(licencia=>licencia.estado_id.nombre === 'Sinaloa')
     const licenciaEncontrada = licenciaSinaloa?.find((item) => item.folio === folio);
-    const licenciaEncontradaAll = licenciaSinaloa2.find((item) => item.folio === folio);
+    const licenciaEncontradaAll = licenciaSinaloa2?.find((item) => item.folio === folio);
   function formatearFecha(fechaISO8601) {
     const fecha = new Date(fechaISO8601);
     const dia = fecha.getUTCDate();
