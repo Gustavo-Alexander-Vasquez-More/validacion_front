@@ -13,7 +13,7 @@ export default function Tabasco() {
   }, [dispatch]);
 
 
-  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
 
   const licenciaTabasco=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Tabasco') : [];
 

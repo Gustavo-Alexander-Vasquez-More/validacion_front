@@ -36,6 +36,7 @@ async function editarLicencia(){
         if(payload){
         await dispatch(licenciaActions.update_licencias(payload)) 
          dispatch(licenciaActions.read_licencia(1))
+         dispatch(licenciaActions.read_Alllicencias())
         Swal.fire({
             position: 'center',
             icon: 'success',
@@ -62,6 +63,7 @@ async function editarLicencia(){
 useEffect(() => {
   dispatch(estados.read_estados())
   dispatch(licenciaActions.read_licencia())
+  dispatch(licenciaActions.read_Alllicencias())
 }, [dispatch]);
 
 const estado=useSelector((store)=>store.estados.estados)

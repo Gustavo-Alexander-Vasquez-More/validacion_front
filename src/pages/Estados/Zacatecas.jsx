@@ -12,7 +12,7 @@ export default function Zacatecas() {
   useEffect(() => {
     dispatch(licenciaActions.read_Alllicencias());
   }, [dispatch]);
-  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
   const licenciaZacatecas = Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Zacatecas') : [];
 
   console.log(licencia);

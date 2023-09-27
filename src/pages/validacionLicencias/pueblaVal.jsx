@@ -14,7 +14,8 @@ export default function pueblaVal() {
     if(rol === '1' || rol ==='2' ){
       useEffect(() => {
         dispatch(licenciaActions.read_licencia(page))
-      }, []);
+        dispatch(licenciaActions.read_Alllicencias())
+      }, [dispatch]);
     }
   
     if(rol === '3'){
@@ -24,6 +25,7 @@ export default function pueblaVal() {
         }
       useEffect(() => {
         dispatch(licenciaActions.read_licenciaAuth(payload))
+        dispatch(licenciaActions.read_Alllicencias())
       }, []);
     }
     
@@ -41,13 +43,13 @@ export default function pueblaVal() {
         event.preventDefault();
         alert('Prohibido realizar clic derecho')
       }
-      const licencias=useSelector((store)=>store.licencias?.licencias)
-      const licencia=licencias.response
-      const licenciaPuebla=licencia?.filter(licencia=>licencia.estado_id.nombre === 'Puebla')
-      console.log(licencia);
-    
+      const licencias = useSelector((store) => store.licencias?.licencias);
+      const licencia = licencias.response;
+      const allLicencia=useSelector((store) => store.licencias?.AllLicencias);
+      const licenciaPuebla = licencia?.filter(licencia => licencia.estado_id.nombre === 'Puebla');
+      const licenciaPuebla2 = allLicencia?.filter(licencia => licencia.estado_id.nombre === 'Puebla');
       const licenciaEncontrada = licenciaPuebla?.find((item) => item.folio === folio);
-    console.log(licenciaEncontrada);
+      const licenciaEncontradaAll = licenciaPuebla2?.find((item) => item.folio === folio);
     function formatearFecha(fechaISO8601) {
       const fecha = new Date(fechaISO8601);
       const dia = fecha.getUTCDate();
@@ -69,22 +71,51 @@ export default function pueblaVal() {
     <div className='w-[80%] sm:w-[30%] h-[70vh] absolute lg:w-[25%] lg:h-[80vh] sm:right-[55%] sm:h-[80vh]  lg:right-[60%] border-solid border-[1px] border-[#c7c4c4] bg-[white] animate-rotate-x rounded-[5px]'>
     <div className='w-full h-[5vh]  text-[#4e4e4e] flex justify-center items-center text-[1.2rem] border-solid border-[1px] border-[#c7c4c4]'>Datos personales</div>
     <div className='w-full h-[15vh] flex justify-center py-[1rem]'>
-        <img className='h-[13vh] w-[6rem]' src={licenciaEncontrada ? licenciaEncontrada.foto : 'nothing' } alt="" />
+        <img className='h-[13vh] w-[6rem]' src={licenciaEncontradaAll ? licenciaEncontradaAll.foto : (licenciaEncontrada ? licenciaEncontrada.foto : 'nothing')} alt="" />
     </div>
     <div className='w-full h-[49vh] px-[1.5rem] flex flex-col gap-1 py-[0.5rem]'>
     <p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>NOMBRE COMPLETO</p>
-    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? licenciaEncontrada.nombre : 'Nombre no encontrado'}</p>
+    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'>
+  <p className='text-[#000000]'>
+    {licenciaEncontradaAll ? licenciaEncontradaAll.nombre : (licenciaEncontrada ? licenciaEncontrada.nombre : 'Nombre no encontrado')}
+  </p>
 </div>
-    <p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>FOLIO</p>
-    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? licenciaEncontrada.folio : 'Nombre no encontrado'}</p></div>
-    <p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>TIPO</p>
-    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? licenciaEncontrada.tipo : 'Tipo no encontrado'}</p></div>
-    <p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>RFC / CURP</p>
-    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? licenciaEncontrada.rfc_curp : 'Folio no encontrado'}</p></div>
-    <p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>FECHA DE EXPEDICIÓN</p>
-    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? formatearFecha(licenciaEncontrada.expedicion) : 'Fecha no encontrada'}</p></div>
-    <p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>VIGENCIA</p>
-    <div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'><p className='text-[#000000]'>{licenciaEncontrada ? licenciaEncontrada.vigencia : 'Fecha no encontrada'}</p></div>
+
+<p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>FOLIO</p>
+<div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'>
+  <p className='text-[#000000]'>
+    {licenciaEncontradaAll ? licenciaEncontradaAll.folio : (licenciaEncontrada ? licenciaEncontrada.folio : 'Folio no encontrado')}
+  </p>
+</div>
+
+<p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>TIPO</p>
+<div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'>
+  <p className='text-[#000000]'>
+    {licenciaEncontradaAll ? licenciaEncontradaAll.tipo : (licenciaEncontrada ? licenciaEncontrada.tipo : 'Tipo no encontrado')}
+  </p>
+</div>
+
+<p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>RFC / CURP</p>
+<div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'>
+  <p className='text-[#000000]'>
+    {licenciaEncontradaAll ? licenciaEncontradaAll.rfc_curp : (licenciaEncontrada ? licenciaEncontrada.rfc_curp : 'Folio no encontrado')}
+  </p>
+</div>
+
+<p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>FECHA DE EXPEDICIÓN</p>
+<div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'>
+  <p className='text-[#000000]'>
+    {licenciaEncontradaAll ? formatearFecha(licenciaEncontradaAll.expedicion) : (licenciaEncontrada ? formatearFecha(licenciaEncontrada.expedicion) : 'Fecha no encontrada')}
+  </p>
+</div>
+
+<p className='text-[#4e4e4e] sm:text-[1rem] text-[0.8rem]'>VIGENCIA</p>
+<div className='border-[1px] border-solid border-[#c7c4c4] rounded-[5px] h-[2.5rem] flex items-center px-[1rem]'>
+  <p className='text-[#000000]'>
+    {licenciaEncontradaAll ? licenciaEncontradaAll.vigencia : (licenciaEncontrada ? licenciaEncontrada.vigencia : 'Fecha no encontrada')}
+  </p>
+</div>
+
     </div>
     </div>
     <div className='bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Puebla%2F2.png?alt=media&token=baa3fcd8-ef82-42e2-91df-eeb7d29cbb24")] w-full h-[30vh] bg-contain bg-no-repeat'></div>

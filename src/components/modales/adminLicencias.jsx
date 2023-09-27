@@ -19,12 +19,17 @@ function openModal(opcion){
   setMostrarModal(true)
 }
 const licencia = useSelector((store) => store.licencias?.licencias);
+const AllLicencia = useSelector((store) => store.licencias?.AllLicencias);
 const licencias=licencia?.response
 console.log(licencias);
 const page=currentPage
 useEffect(() => {
   localStorage.setItem('pagina', currentPage);
   dispatch(licenciaActions.read_licencia(page));
+  }, [dispatch]);
+
+useEffect(() => {
+  dispatch(licenciaActions.read_Alllicencias())
 }, [dispatch]);
 function handleNext(){
   setCurrentPage(currentPage + 1)
@@ -90,19 +95,29 @@ async function deleteCliente(folio) {
   };
  const Superadmin=localStorage.getItem('rol')
  
- const filteredLicencias = licencias?.filter((licencia) => {
-  const nombre = licencia?.nombre.toLowerCase();
-  const folio = licencia?.folio.toLowerCase();
-  const searchTermLower = searchTerm.toLowerCase();
+ const MAX_RESULTS = 5;
 
-  return nombre.includes(searchTermLower) || folio.includes(searchTermLower);
-});
-
+ const filteredLicencias = searchTerm
+   ? AllLicencia?.filter((licencia) => {
+       const nombre = licencia?.nombre.toLowerCase();
+       const folio = licencia?.folio.toLowerCase();
+       const creador = licencia?.author_id.usuario.toLowerCase();
+       const searchTermLower = searchTerm.toLowerCase();
+ 
+       // Si se está buscando por creador, no aplicar límite de resultados
+       if (searchTermLower && searchTermLower === creador) {
+         return creador.includes(searchTermLower);
+       }
+ 
+       // Mostrar solo las primeras MAX_RESULTS coincidencias para otras búsquedas
+       return nombre.includes(searchTermLower) || folio.includes(searchTermLower);
+     }).slice(0, searchTerm === AllLicencia[0]?.author_id.usuario.toLowerCase() ? AllLicencia.length : MAX_RESULTS)
+   : licencias;
  const removeSpacesAndAccents = (str) => {
   // Elimina espacios y tildes
   return str.toLowerCase().replace(/ /g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 };
-
+console.log(filteredLicencias);
 const pagina=localStorage.setItem('pagina', currentPage)
 
   return (
@@ -129,6 +144,7 @@ const pagina=localStorage.setItem('pagina', currentPage)
               <tr className=''>
                 <th className='text-center px-[1rem] bg-gray-200 text-[0.5rem] lg:text-[1rem]'>NOMBRE</th>
                 <th className='text-center px-[1rem] bg-gray-200 text-[0.5rem] lg:text-[1rem]'>FOLIO</th>
+                <th className='text-center px-[1rem] bg-gray-200 text-[0.5rem] lg:text-[1rem]'>CREADOR</th>
                 <th className='text-center px-[1rem] bg-gray-200 text-[0.5rem] lg:text-[1rem]'>ESTADO</th>
                 <th className='text-center px-[1rem] bg-gray-200 text-[0.5rem] lg:text-[1rem]'>VER/EDITAR/ELIMINAR</th>
                 </tr>
@@ -147,6 +163,7 @@ const pagina=localStorage.setItem('pagina', currentPage)
                   <tr  key={licencia._id}>
                     <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.nombre}</td>
                     <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.folio}</td>
+                    <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.author_id.usuario}</td>
                     <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.estado_id.nombre}</td>
                     <td className='justify-center px-[1rem] flex lg:gap-5 gap-1 bg-gray-100 '>
                     <Anchor className='flex ' to={`/validacion/${removeSpacesAndAccents(licencia?.estado_id?.nombre)}/${licencia?.folio}`}>

@@ -12,7 +12,7 @@ export default function Colima() {
     dispatch(licenciaActions.read_Alllicencias());
   }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
   const licenciaColima=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Colima') : [];
 
   console.log(licencia);

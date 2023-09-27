@@ -3,7 +3,8 @@ import LicenciaActions from "../actions/licenciaAction.js";
 
 const {create_licencia, read_licencia, delete_licencia, update_licencias, read_licenciaAuth, read_Alllicencias} = LicenciaActions;
 const initialState = {
-  licencias:[]
+  licencias:[],
+  AllLicencias:[]
 };
 
 const licenciasReducer = createReducer(initialState, (builder) => {
@@ -41,7 +42,7 @@ const licenciasReducer = createReducer(initialState, (builder) => {
 .addCase(read_Alllicencias.fulfilled, (state, action)=>{
   return{
   ...state,
-  licencias:action.payload
+  AllLicencias:action.payload
   }
 })
 })

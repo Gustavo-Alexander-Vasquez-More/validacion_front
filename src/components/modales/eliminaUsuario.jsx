@@ -31,12 +31,12 @@ export default function eliminaUsuario() {
   
         if (confirmation.isConfirmed) {
           await dispatch(adminActions.delete_admins(datitos));
-          dispatch(adminActions.read_admins());
+          
           Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'Usuario eliminado',
-            showConfirmButton: false,
+            showConfirmButton: dispatch(adminActions.read_admins()),
             timer: 1500,
           });
       

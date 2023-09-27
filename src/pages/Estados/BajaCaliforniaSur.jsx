@@ -13,9 +13,9 @@ export default function BajaCaliforniaSur() {
     dispatch(licenciaActions.read_Alllicencias());
   }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
   const licenciaBajaCalSur=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Baja California Sur') : [];
-  console.log(licenciaCampeche);
+  
 
   console.log(licencia);
   console.log(licenciaBajaCalSur);

@@ -13,7 +13,7 @@ export default function Jalisco() {
     dispatch(licenciaActions.read_Alllicencias());
   }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
   const licenciaJalisco=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Jalisco') : [];
 
   console.log(licencia);

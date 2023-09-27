@@ -14,7 +14,7 @@ export default function Oaxaca() {
     dispatch(licenciaActions.read_Alllicencias());
   }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
   const licenciaOaxaca=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Oaxaca') : [];
 
   console.log(licencia);

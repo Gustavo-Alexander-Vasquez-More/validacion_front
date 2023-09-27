@@ -13,7 +13,7 @@ export default function QuintanaRoo() {
     dispatch(licenciaActions.read_Alllicencias());
   }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
   const licenciaQuintana=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Quintana Roo') : [];
 
   console.log(licencia);

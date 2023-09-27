@@ -14,7 +14,7 @@ export default function SanLuisPotosi() {
     dispatch(licenciaActions.read_Alllicencias());
   }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias?.licencias) || [];
+  const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
   const licenciaSanLuis=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'San Luis Potosí') : [];
 
   console.log(licencia);
