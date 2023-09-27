@@ -24,7 +24,7 @@ export default function eliminaUsuario() {
         const confirmation = await Swal.fire({
           title: `¿Estás seguro de que deseas eliminar el usuario ${selectUser} ?`,
           showDenyButton: true,
-          showCancelButton: true,
+          
           confirmButtonText: 'Sí',
           denyButtonText: 'No',
         });

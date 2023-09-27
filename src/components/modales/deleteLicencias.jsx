@@ -4,72 +4,83 @@ import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import { Link as Anchor } from 'react-router-dom';
 export default function deleteLicencias() {
-    
-    const dispatch = useDispatch();
-    const [searchTerm, setSearchTerm] = useState('');
-    const [currentPage, setCurrentPage] = useState(
-      parseInt(localStorage.getItem('pagina')) || 1 //le digo que mi estado inicial sea 1 o que sea el numero almacenado en el local storage
-    );
-    useEffect(() => {
-      const payload={
-        page:currentPage,
-        author:user
-        }
-      localStorage.setItem('pagina', currentPage);
-      dispatch(licenciaActions.read_licenciaAuth(payload));
-    }, [dispatch]);
-    
+  const dispatch = useDispatch();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(
+    parseInt(localStorage.getItem('pagina')) || 1
+  );
+  const user = localStorage.getItem('usuario');
+  const payload = {
+    page: currentPage,
+    author: user,
+  };
+  useEffect(() => {
     const user = localStorage.getItem('usuario');
-    const licencia = useSelector((store) => store.licencias?.licencias);
-    const licencias = licencia?.response || [];
-   console.log(licencias);
+    const payload = {
+      page: currentPage,
+      author: user,
+    };
+    localStorage.setItem('pagina', currentPage);
+    dispatch(licenciaActions.read_licenciaAuth(payload));
+  }, [dispatch, currentPage]);
+
+  useEffect(() => {
+  dispatch(licenciaActions.read_Alllicencias())
+  }, [dispatch]);
+  const licencia = useSelector((store) => store.licencias?.licencias);
+  const licencias = licencia?.response || [];
+  const allLicencias=useSelector((store)=>store.licencias?.AllLicencias)
+  const licenciasAuth=allLicencias.filter(licencia=> licencia.author_id.usuario === user)
   
+
+  const handleNext = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePrev = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+  async function deleteCliente(folio) {
+    const dato = { folio };
     
+    try {
+      if (dato) {
+        const confirmation = await Swal.fire({
+          title: '¿Estás seguro de que deseas eliminar esta licencia?',
+          showDenyButton: true,
+          
+          confirmButtonText: 'Sí',
+          denyButtonText: 'No',
+        });
   
-    function handleNext(){
-      setCurrentPage(currentPage + 1)
-     }
-    function handlePrev(){
-    setCurrentPage(currentPage - 1)
-    }
-    async function deleteCliente(folio) {
-      const dato = { folio };
-      
-      try {
-        if (dato) {
-          const confirmation = await Swal.fire({
-            title: '¿Estás seguro de que deseas eliminar esta licencia?',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'Sí',
-            denyButtonText: 'No',
-          });
-    
-          if (confirmation.isConfirmed) {
-            dispatch(licenciaActions.delete_licencia(dato));
-            dispatch(licenciaActions.read_licenciaAuth(currentPage));
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Cliente eliminado',
-              showConfirmButton: dispatch(licenciaActions.read_licenciaAuth(currentPage)),
-              timer: 1500,
-            });
-          } else if (confirmation.isDenied) {
-            Swal.fire('Eliminación cancelada');
-          }
-        } else {
+        if (confirmation.isConfirmed) {
+          await dispatch(licenciaActions.delete_licencia(dato));
+          await setCurrentPage(1);
           Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'No se eliminó',
+            position: 'center',
+            icon: 'success',
+            title: 'Cliente eliminado',
+            showConfirmButton:dispatch(licenciaActions.read_licenciaAuth(payload)),
             timer: 1500,
           });
+  
+          // Después de eliminar, regresar a la página 1
+          
+        } else if (confirmation.isDenied) {
+          Swal.fire('Eliminación cancelada');
         }
-      } catch (error) {
-        console.error('Error al eliminar cliente:', error);
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se eliminó',
+          timer: 1500,
+        });
       }
+    } catch (error) {
+      console.error('Error al eliminar cliente:', error);
     }
+  }
     
     const handleFolioClick = async (folio) => {
       try {
@@ -89,7 +100,16 @@ export default function deleteLicencias() {
     // Elimina espacios y tildes
     return str.toLowerCase().replace(/ /g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   };
-  
+  const MAX_RESULTS = 5;
+
+  const filteredLicencias = searchTerm
+    ? licenciasAuth?.filter((licencia) => {
+        const nombre = licencia?.nombre.toLowerCase();
+        const folio = licencia?.folio.toLowerCase();
+        const searchTermLower = searchTerm.toLowerCase();
+        return nombre.includes(searchTermLower) || folio.includes(searchTermLower);
+      }).slice(0, searchTerm === licenciasAuth[0]?.author_id.usuario.toLowerCase() ? licenciasAuth.length : MAX_RESULTS)
+    : licencias;
   return (
     <div className='w-full h-screen bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/pngtree-abstract-white-and-light-gray-wave-modern-soft-luxury-texture-with-image_1379862.jpg?alt=media&token=083e0548-05a8-404f-8bb9-6ac6703d270c")] bg-no-repeat bg-cover'>
     <div className='w-full lg:h-20 h-[5vh] flex justify-center items-center'>
@@ -119,7 +139,7 @@ export default function deleteLicencias() {
               </tr>
           </thead>
           <tbody>
-          {licencias?.length === 0 ? (
+          {filteredLicencias?.length === 0 ? (
               <tr>
                 <td colSpan={4} className='text-center px-[1rem] py-4 bg-gray-100'>
                   <p className='lg:text-[1rem] text-[0.8rem]'>
@@ -128,7 +148,7 @@ export default function deleteLicencias() {
                 </td>
               </tr>
             ) : (
-              licencias?.map((licencia) => (
+              filteredLicencias?.map((licencia) => (
                 <tr  key={licencia._id}>
                   <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.nombre}</td>
                   <td className='text-center px-[1rem] bg-gray-100 text-[0.5rem] lg:text-[1rem]'>{licencia.folio}</td>

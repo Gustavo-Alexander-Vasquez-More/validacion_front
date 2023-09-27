@@ -16,7 +16,7 @@ export default function Tlaxcala() {
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
 
-  const licenciaTlaxcala=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Tlaxcala') : [];
+  const licenciaTlaxcala=Array?.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Tlaxcala') : [];
 
   console.log(licencia);
   console.log(licenciaTlaxcala);
