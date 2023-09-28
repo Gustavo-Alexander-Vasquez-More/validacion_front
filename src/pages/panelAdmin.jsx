@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
 import { Link as Anchor } from 'react-router-dom';
 import CrearUsuarios from '../components/modales/crearUsuario.jsx';
 import ControUsuarios from '../components/modales/controUsuarios.jsx';
@@ -11,6 +10,7 @@ import EliminaUsuario from '../components/modales/eliminaUsuario.jsx';
 import AltaLicencias from '../components/modales/altaLicencias.jsx';
 import AdminLicencias from '../components/modales/adminLicencias.jsx';
 import DeleteLicencias from '../components/modales/deleteLicencias.jsx';
+import UsuariosEnLinea from '../components/modales/usuariosEnLinea.jsx';
 export default function panelAdmin() {
   const [mostrarModal, setMostrarModal]=useState(false)
   const [opcionSelect, setOpcionSelect]=useState(null)
@@ -73,7 +73,7 @@ function openModal(opcion){
   const usuario=localStorage.getItem('usuario')
 return (
   <div className='w-full h-auto bg-[#e4e4e4] '>
-    <div className={`absolute bg-[#e4e4e4] w-[60%] sm:w-[40%] lg:w-[30%] h-full py-[2rem] px-[2rem] flex flex-col gap-10 z-30 items-start transition-transform ${menu ? 'translate-x-0' : '-translate-x-full'}`}>
+    <div className={`absolute bg-[#e4e4e4] w-[60%] sm:w-[40%] lg:w-[30%] h-[110vh] py-[2rem] px-[2rem] flex flex-col gap-10 z-30 items-start transition-transform ${menu ? 'translate-x-0' : '-translate-x-full'}`}>
         <Anchor onClick={closeMenu}>
         <svg className="w-6 h-6 text-[black] hover:animate-spin" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
@@ -87,6 +87,7 @@ return (
           <button onClick={()=>openModal('opcion1')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] sm:py-[0.5rem]  lg:w-[80%] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0] w-full'>Crear usuarios</button>
           <button onClick={()=>openModal('opcion2')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full'>Asignacion folios</button>
           <button onClick={()=>openModal('opcion3')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full'>Eliminar usuario</button>
+          <button onClick={()=>openModal('opcion7')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full'>Usuarios conectados</button>
           <button onClick={()=>openModal('opcion4')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full'>Subir licencias</button>
           <button onClick={()=>openModal('opcion5')} className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full'>Administrar licencias</button>
           <Anchor className='text-[0.8rem] py-[0.5rem] sm:w-[90%] sm:text-[0.8rem] lg:w-[80%] sm:py-[0.5rem] lg:h-[2.5rem] bg-[#333333] text-white rounded-[5px] hover:bg-[#5353a0]  w-full' to='https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/QRS-Mercurio.zip?alt=media&token=8cfb8e08-b030-45cf-900d-eabd19bf740f'><p className='text-center  '>Descarga los QR</p></Anchor>
@@ -128,9 +129,7 @@ return (
       </svg>
     </Anchor>
 
-  
-
-    <p className="text-[black] lg:text-[3rem] font-thin sm:text-[2.5rem] w-[100%] text-center">
+<p className="text-[black] lg:text-[3rem] font-thin sm:text-[2.5rem] w-[100%] text-center">
       Panel de Administrador
     </p>
     <img className='lg:w-[4rem] w-[2.5rem]' src="https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/Opera_Captura_de_pantalla_2023-09-14_152118_www.google.com-removebg-preview.png?alt=media&token=62d36514-e887-4017-aebc-507d5e1ebcf1" alt="" />
@@ -155,10 +154,23 @@ return (
         {opcionSelect === 'opcion6' && (
          <DeleteLicencias/>
         )}
+        {opcionSelect === 'opcion7' && (
+         <UsuariosEnLinea/>
+        )}
       </>
       
     )
 }
+{!mostrarModal && (
+  <>
+  <div className='w-full bg-[url("https://media.istockphoto.com/id/1023066592/es/foto/planeta-mercurio-sobre-fondo-blanco-render-3d.jpg?s=170667a&w=0&k=20&c=BmfW9qpxZumr5Uq3QqtJHkFOIjfZR4wrEiEV009VG9Q=")] bg-no-repeat bg-center bg-[white] h-screen'>
+  <div className='w-full h-[30vh] flex justify-center items-center flex-col'>
+<p className='sm:text-[3.5rem] text-[2rem] text-center'>Bienvenidos a Mercurio</p>
+<p className='sm:text-[2rem] text-[1.5rem]'>Aministra tus  Altas y mas!</p>
+  </div>
+  </div>
+  </>
+)}
 </div>
 );
 }

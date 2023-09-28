@@ -31,13 +31,29 @@ useEffect(() => {
 useEffect(() => {
   dispatch(licenciaActions.read_Alllicencias())
 }, [dispatch]);
-function handleNext(){
-  setCurrentPage(currentPage + 1)
-  dispatch(licenciaActions.read_licencia(currentPage + 1));
- }
-function handlePrev(){
-setCurrentPage(currentPage - 1)
-dispatch(licenciaActions.read_licencia(currentPage - 1));
+function handleNext() {
+  const nextPage = currentPage + 1;
+  const hasNextPage = licencia?.nextPage;
+
+  if (hasNextPage) {
+    dispatch(licenciaActions.read_licencia(nextPage)).then(() => {
+      setCurrentPage(nextPage);
+    });
+  } else {
+    // Manejar el caso en el que no hay una página siguiente
+    console.log('No hay más datos en la página siguiente.');
+  }
+}
+function handlePrev() {
+  if (currentPage > 1) {
+    const prevPage = currentPage - 1;
+    dispatch(licenciaActions.read_licencia(prevPage)).then(() => {
+      setCurrentPage(prevPage);
+    });
+  } else {
+    // Manejar el caso en el que no hay una página anterior
+    console.log('No hay más datos en la página anterior.');
+  }
 }
 async function deleteCliente(folio) {
     const dato = { folio };
