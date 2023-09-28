@@ -13,7 +13,7 @@ export default function Yucatan() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaYucatan = Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Yucatán') : [];
+  const licenciaYucatan = Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Yucatán') : [];
 
 
   console.log(licencia);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaYucatan.find((item) =>
+    const foundLicencia = licenciaYucatan?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

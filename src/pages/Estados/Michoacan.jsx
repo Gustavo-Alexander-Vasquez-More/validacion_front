@@ -14,7 +14,7 @@ export default function Michoacan() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaMichoacan=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Michoacán') : [];
+  const licenciaMichoacan=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Michoacán') : [];
 
   console.log(licencia);
   console.log(licenciaMichoacan);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaMichoacan.find((item) =>
+    const foundLicencia = licenciaMichoacan?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

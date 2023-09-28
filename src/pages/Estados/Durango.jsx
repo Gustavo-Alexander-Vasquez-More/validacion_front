@@ -13,7 +13,7 @@ export default function Durango() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaDurango=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Durango' ) : [];
+  const licenciaDurango=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Durango' ) : [];
 
   console.log(licencia);
   console.log(licenciaDurango);
@@ -29,7 +29,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaDurango.find((item) =>
+    const foundLicencia = licenciaDurango?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

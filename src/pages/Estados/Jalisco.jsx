@@ -14,7 +14,7 @@ export default function Jalisco() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaJalisco=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Jalisco') : [];
+  const licenciaJalisco=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Jalisco') : [];
 
   console.log(licencia);
   console.log(licenciaJalisco);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaJalisco.find((item) =>
+    const foundLicencia = licenciaJalisco?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

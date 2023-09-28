@@ -14,7 +14,7 @@ export default function EdoDeMexico() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaEdomex=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Edomex') : [];
+  const licenciaEdomex=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Edomex') : [];
 
   console.log(licencia);
   console.log(licenciaEdomex);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaEdomex.find((item) =>
+    const foundLicencia = licenciaEdomex?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

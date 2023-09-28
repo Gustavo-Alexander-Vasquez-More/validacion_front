@@ -14,7 +14,7 @@ export default function Sonora() {
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
 
-  const licenciaSonora=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Sonora') : [];
+  const licenciaSonora=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Sonora') : [];
 
   console.log(licencia);
   console.log(licenciaSonora);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaSonora.find((item) =>
+    const foundLicencia = licenciaSonora?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

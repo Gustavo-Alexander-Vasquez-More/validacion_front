@@ -14,7 +14,7 @@ export default function Queretaro() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaQueretaro=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Querétaro') : [];
+  const licenciaQueretaro=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Querétaro') : [];
 
   console.log(licencia);
   console.log(licenciaQueretaro);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaQueretaro.find((item) =>
+    const foundLicencia = licenciaQueretaro?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

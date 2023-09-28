@@ -13,7 +13,7 @@ export default function Campeche() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaCampeche=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Campeche') : [];
+  const licenciaCampeche=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Campeche') : [];
 console.log(licenciaCampeche);
   console.log(licencia);
   
@@ -27,7 +27,7 @@ async function navigateValidation() {
   try {
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaCampeche.find((item) =>
+    const foundLicencia = licenciaCampeche?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized))
 console.log(foundLicencia );
     if (foundLicencia ) {

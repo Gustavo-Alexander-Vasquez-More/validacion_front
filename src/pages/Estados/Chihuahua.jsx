@@ -14,7 +14,7 @@ export default function Chihuahua() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaChihuahua=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Chihuahua') : [];
+  const licenciaChihuahua=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Chihuahua') : [];
 
   console.log(licencia);
   console.log(licenciaChihuahua);
@@ -29,7 +29,7 @@ async function navigateValidation() {
   try {
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaChihuahua.find((item) =>
+    const foundLicencia = licenciaChihuahua?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized))
 console.log(foundLicencia );
     if (foundLicencia ) {

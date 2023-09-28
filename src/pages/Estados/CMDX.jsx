@@ -14,7 +14,7 @@ export default function CMDX() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaCdmx=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Cdmx') : [];
+  const licenciaCdmx=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Cdmx') : [];
 
   console.log(licencia);
   console.log(licenciaCdmx);
@@ -29,7 +29,7 @@ async function navigateValidation() {
   try {
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaCdmx.find((item) =>
+    const foundLicencia = licenciaCdmx?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized))
 console.log(foundLicencia );
     if (foundLicencia ) {

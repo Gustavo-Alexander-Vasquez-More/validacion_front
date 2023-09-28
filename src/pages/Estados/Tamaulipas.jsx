@@ -16,7 +16,7 @@ export default function Tamaulipas() {
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
 
-  const licenciaTamaulipas=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Tamaulipas') : [];
+  const licenciaTamaulipas=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Tamaulipas') : [];
 
   console.log(licencia);
   console.log(licenciaTamaulipas);
@@ -32,7 +32,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaTamaulipas.find((item) =>
+    const foundLicencia = licenciaTamaulipas?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

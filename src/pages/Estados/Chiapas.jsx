@@ -13,7 +13,7 @@ export default function Chiapas() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaChiapas=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Chiapas') : [];
+  const licenciaChiapas=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Chiapas') : [];
 
   console.log(licencia);
   console.log(licenciaChiapas);
@@ -28,7 +28,7 @@ async function navigateValidation() {
   try {
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaChiapas.find((item) =>
+    const foundLicencia = licenciaChiapas?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized))
 console.log(foundLicencia );
     if (foundLicencia ) {

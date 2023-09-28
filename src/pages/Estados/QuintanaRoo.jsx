@@ -14,7 +14,7 @@ export default function QuintanaRoo() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaQuintana=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Quintana Roo') : [];
+  const licenciaQuintana=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Quintana Roo') : [];
 
   console.log(licencia);
   console.log(licenciaQuintana);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaQuintana.find((item) =>
+    const foundLicencia = licenciaQuintana?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

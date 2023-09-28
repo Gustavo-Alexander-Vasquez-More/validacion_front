@@ -14,7 +14,7 @@ export default function Puebla() {
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
 
-  const licenciaPuebla=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Puebla') : [];
+  const licenciaPuebla=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Puebla') : [];
 
   console.log(licencia);
   console.log(licenciaPuebla);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaPuebla.find((item) =>
+    const foundLicencia = licenciaPuebla?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

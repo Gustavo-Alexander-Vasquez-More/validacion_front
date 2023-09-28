@@ -14,7 +14,7 @@ export default function Nayarit() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaNayarit=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Nayarit') : [];
+  const licenciaNayarit=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Nayarit') : [];
   console.log(licencia);
   console.log(licenciaNayarit);
   ;
@@ -29,7 +29,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaNayarit.find((item) =>
+    const foundLicencia = licenciaNayarit?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

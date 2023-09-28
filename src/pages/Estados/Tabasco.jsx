@@ -15,7 +15,7 @@ export default function Tabasco() {
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
 
-  const licenciaTabasco=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Tabasco') : [];
+  const licenciaTabasco=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Tabasco') : [];
 
   console.log(licencia);
   console.log(licenciaTabasco);
@@ -31,7 +31,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaTabasco.find((item) =>
+    const foundLicencia = licenciaTabasco?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

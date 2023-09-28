@@ -14,7 +14,7 @@ export default function Guerrero() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaGuerrero=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Guerrero') : [];
+  const licenciaGuerrero=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Guerrero') : [];
 
   console.log(licencia);
   console.log(licenciaGuerrero);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaGuerrero.find((item) =>
+    const foundLicencia = licenciaGuerrero?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

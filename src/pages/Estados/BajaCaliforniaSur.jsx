@@ -13,8 +13,8 @@ export default function BajaCaliforniaSur() {
     dispatch(licenciaActions.read_Alllicencias());
   }, [dispatch]);
 
-  const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaBajaCalSur=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Baja California Sur') : [];
+  const licencia = useSelector((store) => store.licencias?.AllLicencias) ;
+  const licenciaBajaCalSur=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Baja California Sur') : [];
   
 
   console.log(licencia);
@@ -31,7 +31,7 @@ async function navigateValidation() {
     // Verificar si el valor de búsqueda existe en la lista de folio_tipo
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaBajaCalSur.find((item) =>
+    const foundLicencia = licenciaBajaCalSur?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized))
 console.log(foundLicencia );
     if (foundLicencia ) {

@@ -15,7 +15,7 @@ export default function BajaCalifornia() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaBajaCalNorte=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre ===  'Baja California Norte') : [];
+  const licenciaBajaCalNorte=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre ===  'Baja California Norte') : [];
 
   console.log(licencia);
   console.log(licenciaBajaCalNorte);
@@ -31,7 +31,7 @@ async function navigateValidation() {
     // Verificar si el valor de búsqueda existe en la lista de folio_tipo
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaBajaCalNorte.find((item) =>
+    const foundLicencia = licenciaBajaCalNorte?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized))
 console.log(foundLicencia );
     if (foundLicencia ) {

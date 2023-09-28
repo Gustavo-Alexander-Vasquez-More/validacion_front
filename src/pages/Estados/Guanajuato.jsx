@@ -14,7 +14,7 @@ export default function Guanajuato() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaGuanajuato=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Guanajuato') : [];
+  const licenciaGuanajuato=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Guanajuato') : [];
 
   console.log(licencia);
   console.log(licenciaGuanajuato);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaGuanajuato.find((item) =>
+    const foundLicencia = licenciaGuanajuato?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

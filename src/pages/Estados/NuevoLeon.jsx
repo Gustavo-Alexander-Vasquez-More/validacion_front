@@ -14,7 +14,7 @@ export default function NuevoLeon() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaNuevoLeon=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Nuevo León') : [];
+  const licenciaNuevoLeon=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Nuevo León') : [];
 
   console.log(licencia);
   console.log(licenciaNuevoLeon);
@@ -30,7 +30,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaNuevoLeon.find((item) =>
+    const foundLicencia = licenciaNuevoLeon?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 

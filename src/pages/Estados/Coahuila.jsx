@@ -13,7 +13,7 @@ export default function Coahuila() {
   }, [dispatch]);
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
-  const licenciaCoahuila=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Coahuila') : [];
+  const licenciaCoahuila=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Coahuila') : [];
 
   console.log(licencia);
   console.log(licenciaCoahuila);
@@ -28,7 +28,7 @@ async function navigateValidation() {
   try {
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaCoahuila.find((item) =>
+    const foundLicencia = licenciaCoahuila?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized))
 
 console.log(foundLicencia );

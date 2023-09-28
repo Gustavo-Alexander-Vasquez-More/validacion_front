@@ -15,7 +15,7 @@ export default function Sinaloa() {
 
   const licencia = useSelector((store) => store.licencias?.AllLicencias) || [];
 
-  const licenciaSinaloa=Array.isArray(licencia) ? licencia.filter(licencia => licencia.estado_id?.nombre === 'Sinaloa') : [];
+  const licenciaSinaloa=Array.isArray(licencia) ? licencia?.filter(licencia => licencia.estado_id?.nombre === 'Sinaloa') : [];
 
   console.log(licencia);
   console.log(licenciaSinaloa);
@@ -31,7 +31,7 @@ async function navigateValidation() {
     // Normalizar la entrada del usuario y la entrada de la base de datos
     const searchValueNormalized = searchValue.toLowerCase().replace(/-/g, '');
     
-    const foundLicencia = licenciaSinaloa.find((item) =>
+    const foundLicencia = licenciaSinaloa?.find((item) =>
       item.folio.replace(/-/g, '').toLowerCase().includes(searchValueNormalized)
     );
 
