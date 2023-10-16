@@ -81,8 +81,9 @@ async function CrearUsuario() {
     </div>
     <div className='flex flex-col lg:px-[1rem] sm:w-[85%] lg:w-[73%] w-[73%] '>
     <p>Rol de usuario:</p>
-    <p>Rol 1: Super-admin (Tiene acceso al panel completo)</p>
-    <p>Rol 2: Admin común (Tiene restricciones en el panel)</p>
+    <p>Rol 1: Tiene todos los privilegios y gestiona los usuarios.</p>
+    <p>Rol 2: Tiene todo excepto crear usuarios o gestionarlos.</p>
+    <p>Rol 3: Solo puede dar Altas y eliminarlas.</p>
     <input onChange={captureRol} ref={inputRol} className='w-[99%]  border-solid border-[1px] border-[gray] rounded-[5px] px-[1rem] placeholder:px-[0.1rem] h-[2rem]' type="number" placeholder='Rol 1 o Rol 2' />
     </div>
     <div className='flex flex-col lg:px-[1rem] sm:w-[85%] lg:w-[73%] w-[73%]'>

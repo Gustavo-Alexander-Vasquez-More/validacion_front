@@ -165,8 +165,8 @@ return (
   <>
   <div className='w-full bg-[url("https://media.istockphoto.com/id/1023066592/es/foto/planeta-mercurio-sobre-fondo-blanco-render-3d.jpg?s=170667a&w=0&k=20&c=BmfW9qpxZumr5Uq3QqtJHkFOIjfZR4wrEiEV009VG9Q=")] bg-no-repeat bg-center bg-[white] h-screen'>
   <div className='w-full h-[30vh] flex justify-center items-center flex-col'>
-<p className='sm:text-[3.5rem] text-[2rem] text-center'>Bienvenidos a Mercurio</p>
-<p className='sm:text-[2rem] text-[1.5rem]'>Aministra tus  Altas y mas!</p>
+<p className='sm:text-[3.5rem] text-[2rem] text-center'>Sistema de Altas.</p>
+<p className='sm:text-[2rem] text-[1.5rem]'>Mercurio</p>
   </div>
   </div>
   </>

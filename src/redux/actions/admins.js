@@ -62,6 +62,7 @@ const update_admins = createAsyncThunk(
   'update_admins', 
   async (payload) => {
     const { usuario, folios } = payload;
+    
     console.log(usuario);
     console.log(folios);
       try {

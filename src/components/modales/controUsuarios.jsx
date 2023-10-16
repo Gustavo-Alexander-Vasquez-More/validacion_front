@@ -14,6 +14,7 @@ setUserValue(userSelect.current.value.trim())
 function capturarValorFolios(){
 setAddFolioValue(AgregarFolio.current.value.trim())
 }
+console.log(userValue);
 async function agregarMasFolios() {
   try {
     const adminToUpdate = adminFiltered.find((admin) => admin.usuario === userValue);
@@ -59,7 +60,7 @@ useEffect(() => {
     dispatch(adminActions.read_admins())
 }, []);
 const admins=useSelector((store)=>store.admins.admins)
-const adminFiltered = Array.isArray(admins) ? admins.filter(admin => admin.rol === 2) : [];
+const adminFiltered = Array.isArray(admins) ? admins.filter(admin => admin.rol >= 2) : [];
   return (
     <div className='w-full h-full flex justify-center  py-[10rem] bg-[url("https://firebasestorage.googleapis.com/v0/b/validacion-de-licencias-c813d.appspot.com/o/pngtree-abstract-white-and-light-gray-wave-modern-soft-luxury-texture-with-image_1379862.jpg?alt=media&token=083e0548-05a8-404f-8bb9-6ac6703d270c")] bg-no-repeat bg-cover'>
    
