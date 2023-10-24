@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const create_licencia = createAsyncThunk(
@@ -7,10 +8,21 @@ const create_licencia = createAsyncThunk(
 async(datos)=>{
 try {
 const {data}=await axios.post('https://validacionback-production.up.railway.app/api/clientes/create', datos)
-
+Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Licencia creada!',
+    showConfirmButton: false,
+    timer: 1500,
+});
 return data.response
 } catch (error) {
-    console.log(error);
+    Swal.fire({
+        icon: 'error',
+        title: 'No se ha creado el Alta',
+        text: 'Este folio ya existe intenta con otro!',
+        
+      })
 }
 } 
 )

@@ -63,18 +63,7 @@ const datos=useSelector((store)=>store.estados.estados)
 const user=localStorage.getItem('usuario')
 async function subirLicencia() {
 try {
-    const folioExiste = licencia?.some(item => item.folio === folio_tipoValue);
-      
-    if (folioExiste) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'El folio ya existe. Intenta con otro folio.',
-      });
-      return; // Detener la ejecución
-    }
-
-    if (nombreValue && folio_tipoValue && rfcValue && expedicionValue && vigeniaValue && estadoValue && file) {
+   if (nombreValue && folio_tipoValue && rfcValue && expedicionValue && vigeniaValue && estadoValue && file) {
     const formData = new FormData();
     const data={
         nombre:nombreValue,
@@ -95,13 +84,7 @@ const rolUsuario = parseInt(localStorage.getItem('rol'));
 }
 await dispatch(licenciaActions.create_licencia(data));
 await dispatch(licenciaActions.read_licencia())
-Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: 'Licencia creada!',
-    showConfirmButton: false,
-    timer: 1500,
-});
+
 
     if (rolUsuario !== 1) {
     const nuevaCantidadDeFolio = cantidadDeFOlio - 1;

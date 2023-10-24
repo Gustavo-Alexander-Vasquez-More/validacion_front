@@ -30,7 +30,7 @@ export default function deleteLicencias() {
   const licencia = useSelector((store) => store.licencias?.licencias);
   const licencias = licencia?.response || [];
   const allLicencias=useSelector((store)=>store.licencias?.AllLicencias)
-  const licenciasAuth=allLicencias.filter(licencia=> licencia.author_id.usuario === user)
+  const licenciasAuth=allLicencias.filter(licencia=> licencia.author_id?.usuario === user)
   
 
   const handleNext = () => {
