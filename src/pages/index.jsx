@@ -83,7 +83,7 @@ function handleKeyPress(event) {
         </Anchor>
       </div>
       <div className='w-full h-[30vh] flex items-end  px-[3rem] py-[3rem] justify-between'>
-      <Anchor className='flex items-center' target='blank'  to='http://verificaciongob.site/MERCURIO.apk'>
+      <Anchor className='flex items-center' target='blank'  to='https://drive.google.com/file/d/1snh1LkfKyIHxZh0RtsryyQRWm03tSDpw/view?usp=drive_link'>
     <img className='w-[4rem]' src="https://cdn.icon-icons.com/icons2/836/PNG/512/Android_icon-icons.com_66772.png" alt="" />
         <p className=' font-bold hover:text-[#553c99]'>Descargar APP.</p>
       </Anchor>
